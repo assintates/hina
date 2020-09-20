@@ -81,31 +81,25 @@
         cols="12"
         v-if="$vuetify.breakpoint.mdAndUp"
       >
-        <v-card
-          :color="item.color[0]"
-          dark
-        >
-          <div class="d-flex flex-no-wrap justify-space-between">
-            <div class="d-flex flex-no-wrap justify-space-between flex-column">
+        <div style="height: 10rem; background-size: 50% 100%; object-fit: cover; border-radius: 5px;"
+             :style="
+             `background: linear-gradient(286deg, ${hexToRgb(item.color[1], 0.4553571770505077)} 3%, ${hexToRgb(item.color[1], 0.010343171448266806)} 19%, ${hexToRgb(item.color[0], 0.819502835313813)} 52%, ${hexToRgb(item.color[0], 1)} 64%,  ${hexToRgb(item.color[0], 0.9699230033810399)} 80%, ${hexToRgb(item.color[0], 1)} 99%), url(${item.thumb}) right no-repeat`">
+          <div class="d-flex flex-no-wrap justify-space-between" style="height: inherit">
+            <div class="d-flex flex-no-wrap justify-space-between flex-column align-self-start" style="height: inherit">
               <v-card-title
                 class="headline text-md flex-wrap"
                 v-text="item.name"
-                style="overflow: hidden; text-overflow: ellipsis;"
+                style="overflow: hidden; text-overflow: ellipsis; text-shadow: 1px 1px 1px #000000;"
               ></v-card-title>
 
-              <v-card-subtitle v-text="item.idol"></v-card-subtitle>
-              <v-card-subtitle v-text="item.source"></v-card-subtitle>
+              <div class="ml-1 mt-1  align-self-start">
+                <v-card-subtitle  v-text="item.idol"></v-card-subtitle>
+              </div>
+              <v-card-subtitle class="" v-text="item.source"></v-card-subtitle>
             </div>
-
-            <v-avatar
-              class="ma-3"
-              size="145"
-              tile
-            >
-              <v-img  :src="item.thumb"></v-img>
-            </v-avatar>
           </div>
-        </v-card>
+
+        </div>
       </v-col>
       <v-col
         v-for="(item, i) in this.RecentViews"
@@ -135,7 +129,7 @@
       :absolute="!fixed"
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span><a href="https://github.com/ixilia">ixilia</a> | Bloom &copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
@@ -194,7 +188,9 @@
     },
 
     methods: {
-
+      hexToRgb(hex, opacity) {
+        return 'rgba(' + (hex = hex.replace('#', '')).match(new RegExp('(.{' + hex.length/3 + '})', 'g')).map(function(l) { return parseInt(hex.length%2 ? l+l : l, 16) }).concat(opacity||1).join(',') + ')';
+      }
     }
 
   }
