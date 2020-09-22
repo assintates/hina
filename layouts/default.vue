@@ -36,18 +36,6 @@
       >
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
       <v-toolbar-title v-text="title"/>
       <v-spacer/>
       <v-btn
@@ -58,9 +46,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <v-container>
-        <nuxt/>
-      </v-container>
+      <nuxt/>
     </v-main>
     <v-navigation-drawer
       v-model="rightDrawer"
@@ -81,23 +67,22 @@
         cols="12"
         v-if="$vuetify.breakpoint.mdAndUp"
       >
-        <div style="height: 10rem; background-size: 50% 100%; object-fit: cover; border-radius: 5px;"
-             :style="
-             `background: linear-gradient(286deg, ${hexToRgb(item.color[1], 0.4553571770505077)} 3%, ${hexToRgb(item.color[1], 0.010343171448266806)} 19%, ${hexToRgb(item.color[0], 0.819502835313813)} 52%, ${hexToRgb(item.color[0], 1)} 64%,  ${hexToRgb(item.color[0], 0.9699230033810399)} 80%, ${hexToRgb(item.color[0], 1)} 99%), url(${item.thumb}) right no-repeat`">
-          <div class="d-flex flex-no-wrap justify-space-between" style="height: inherit">
-            <div class="d-flex flex-no-wrap justify-space-between flex-column align-self-start" style="height: inherit">
-              <v-card-title
-                class="headline text-md flex-wrap"
-                v-text="item.name"
-                style="overflow: hidden; text-overflow: ellipsis; text-shadow: 1px 1px 1px #000000;"
-              ></v-card-title>
+        <div
+          class="pl-3"
+          style="height: 10rem; background-size: 50% 100%; border-radius: 5px;"
+          :style="`background: linear-gradient(286deg, ${hexToRgb(item.color[1], 0.4553571770505077)} 3%, ${hexToRgb(item.color[1], 0.010343171448266806)} 19%, ${hexToRgb(item.color[0], 0.819502835313813)} 52%, ${hexToRgb(item.color[0], 1)} 64%,  ${hexToRgb(item.color[0], 0.9699230033810399)} 80%, ${hexToRgb(item.color[0], 1)} 99%), url(${item.thumb}) right no-repeat`">
 
-              <div class="ml-1 mt-1  align-self-start">
-                <v-card-subtitle  v-text="item.idol"></v-card-subtitle>
-              </div>
-              <v-card-subtitle class="" v-text="item.source"></v-card-subtitle>
-            </div>
-          </div>
+          <v-col no-gutters>
+            <div
+              class="flex-nowrap"
+              style="text-shadow: 2px 2px 8px #4b4a4b;  font-size: large; height: 28px;  width: 325px; overflow: hidden;  position: relative;  display: inline-block; text-overflow: ellipsis; white-space: nowrap;"
+              v-text="item.name"
+              align="start"
+            ></div>
+
+            <p  style="padding-top: 0.5rem; font-weight: lighter;" v-text="item.idol"></p>
+            <p align="start"  style="padding-top: 1.4rem; font-weight: lighter;" v-text="item.source.replace('www.','')"></p>
+          </v-col>
 
         </div>
       </v-col>

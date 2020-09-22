@@ -13,6 +13,7 @@
     "@nuxtjs/pwa": "^3.0.2",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.5",
+    "vue-horizontal-list": "^1.0.12",
     "vuex-persist": "^3.1.0"
   },
   "devDependencies": {
