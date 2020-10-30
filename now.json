@@ -19,6 +19,18 @@
       }
     },
     {
+      "src": "/sw.js",
+      "dest": "/sw.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "Service-Worker-Allowed": "/"
+      }
+    },
+    {
+      "src": "/README.md",
+      "dest": "/README.md"
+    },
+    {
       "src": "/(.*)",
       "dest": "/"
     }
