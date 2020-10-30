@@ -19,7 +19,7 @@
       }
     },
     {
-      "src": "/sw.js",
+      "src": "/static/sw.js",
       "dest": "/_nuxt/static/sw.js",
       "headers": {
         "cache-control": "public, max-age=43200, immutable",
