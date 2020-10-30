@@ -33,7 +33,7 @@
               <v-img
                 :src="`https://proxy.ixil.cc/ren?width=500&height=500&method=cover&image=`+image"></v-img>
             </v-avatar>
-            <h1 v-text="artist"/>
+            <h1 v-text="artist" />
             <div class="" style="align-self: center">
               <v-btn color="rgba(0,0,0,0)" depressed large :to="`/a/`+iid">
                 <v-row>
@@ -50,7 +50,7 @@
           <v-col>
             <h1
               style="align-self: center; font-family: 'Playfair Display', serif; font-size: 5rem;  text-shadow: -2px 5px 9px rgba(0,0,0,0.42);"
-              v-text="GetNS(source)"/>
+              v-text="GetNS(source)" />
             <v-row justify="end">
               <v-btn color="rgba(0,0,0,0)" depressed large :to="`/sagasu?source=`+source">
                 <v-row style="width: inherit" justify="space-around">
@@ -77,7 +77,7 @@
             <v-img contain
                    :src="`https://proxy.ixil.cc/ren?width=500&height=500&method=cover&image=${image}`"></v-img>
           </v-avatar>
-          <h1 v-text="artist"/>
+          <h1 v-text="artist" />
           <div class="" style="align-self: center">
             <v-btn color="rgba(0,0,0,0)" depressed large :to="`/a/`+iid">
               <v-row>
@@ -96,7 +96,7 @@
           <v-col>
             <h1
               style="align-self: center; font-family: 'Playfair Display', serif; font-size: 4rem;  text-shadow: -2px 5px 9px rgba(0,0,0,0.42);"
-              v-text="GetNS(source)"/>
+              v-text="GetNS(source)" />
             <v-row justify="end">
               <v-btn color="rgba(0,0,0,0)" depressed large :to="`/sagasu?source=`+source">
                 <v-row style="width: inherit" justify="space-around">
@@ -139,14 +139,14 @@
       <vue-horizontal-list v-if="parax" style="" :items="data" :options="options">
         <template v-slot:default="{item}">
           <color-card class="pb-5" :shadow="parax" :album="{thumb: item, color: ['#fc1c64','#fc1c64','#fc1c64']}"
-                      style=""/>
+                      style="" />
         </template>
       </vue-horizontal-list>
       <vue-horizontal-list v-if="!parax" style="" :items="items" :options="options">
         <template v-slot:default="{item}">
           <nuxt-link :to="`/a/`+item.id">
             <color-card class="pb-5" :shadow="parax"
-                        :album="{thumb: item.thumb, color: ['#fc1c64','#fc1c64','#fc1c64']}" style=""/>
+                        :album="{thumb: item.thumb, color: ['#fc1c64','#fc1c64','#fc1c64']}" style="" />
           </nuxt-link>
         </template>
       </vue-horizontal-list>

@@ -61,7 +61,7 @@
         </v-row>
       </v-container>
     </v-form>
-    <v-divider class="TopView"/>
+    <v-divider class="TopView" />
     <v-row v-if="$vuetify.breakpoint.mdAndUp & SearchState" justify="space-between"
            style="overflow: hidden; flex-wrap: wrap; height: 4rem;">
       <n-link v-for="(item, i) in Bags"
@@ -82,7 +82,7 @@
         </v-chip>
       </n-link>
     </v-row>
-    <v-divider v-if="$vuetify.breakpoint.smAndUp"/>
+    <v-divider v-if="$vuetify.breakpoint.smAndUp" />
 
     <div style="">
 
@@ -129,7 +129,7 @@
       </v-row>
 
     </div>
-    <v-divider v-if="SearchState"/>
+    <v-divider v-if="SearchState" />
     <v-pagination v-if="SearchState"
                   v-model="Page"
                   :length="Pagination"

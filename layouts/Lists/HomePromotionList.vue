@@ -12,7 +12,7 @@
         <v-row v-if="$vuetify.breakpoint.smAndUp" style="height: 37rem; overflow: hidden;" justify="space-between">
           <div v-for="(item, i) in items"
                :key="i">
-            <home-promote style="padding-bottom: 5rem" :data="item"/>
+            <home-promote style="padding-bottom: 5rem" :data="item" />
           </div>
         </v-row>
         <!-- END Small Screen and Above -->
@@ -22,7 +22,7 @@
         <v-row v-if="$vuetify.breakpoint.xsOnly" style="height: 28rem; overflow: hidden;" justify="space-between">
           <div v-for="(item, i) in items"
                :key="i">
-            <home-promote style="padding-bottom: 3rem" :data="item"/>
+            <home-promote style="padding-bottom: 3rem" :data="item" />
           </div>
         </v-row>
         <!-- END  extra Small Screen -->

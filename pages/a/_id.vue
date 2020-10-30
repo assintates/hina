@@ -13,7 +13,7 @@
                    max-height="318px"
                    max-width="264px"
                    style="border-radius: 5px; box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18);"
-                   :src="`https://proxy.ixil.cc/prox?image=`+info.thumb"/>
+                   :src="`https://proxy.ixil.cc/prox?image=`+info.thumb" />
             <v-col style="margin-left: 4rem;">
               <h1 class="unselectable" v-if="$vuetify.breakpoint.mdAndUp"
                   style="width: 40rem;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 0 0 3px #000000;">
@@ -44,7 +44,7 @@
                               :style=" i > 0  ? 'margin-left: -9px; transform: rotateY(11deg)' : 'margin-left: 0;' "
                               style="box-shadow: -2px 1px 4px -3px #000000, -5px 2px 6px -2px rgba(0,0,0,0.74);">
                       <v-img size="2.2rem"
-                             src="https://cdn.discordapp.com/attachments/488810702190936075/761234831304556554/unknown.png"/>
+                             src="https://cdn.discordapp.com/attachments/488810702190936075/761234831304556554/unknown.png" />
                     </v-avatar>
                   </v-col>
                 </v-badge>
@@ -210,7 +210,7 @@
                max-height="218px"
                max-width="194px"
                style="border-radius: 5px; box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18);"
-               :src="`https://proxy.ixil.cc/prox?image=`+info.thumb"/>
+               :src="`https://proxy.ixil.cc/prox?image=`+info.thumb" />
         <div style="padding-top: 1rem;">
           <h2
             style="width: 18rem;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 0 0 3px #000000;">
@@ -240,7 +240,7 @@
                         :style=" i > 0  ? 'margin-left: -9px; transform: rotateY(11deg)' : 'margin-left: 0;' "
                         style="box-shadow: -2px 1px 4px -3px #000000, -5px 2px 6px -2px rgba(0,0,0,0.74);">
                 <v-img size="2.2rem"
-                       src="https://cdn.discordapp.com/attachments/488810702190936075/761234831304556554/unknown.png"/>
+                       src="https://cdn.discordapp.com/attachments/488810702190936075/761234831304556554/unknown.png" />
               </v-avatar>
             </v-col>
           </v-badge>
@@ -444,7 +444,7 @@
           </v-btn>
         </template>
       </v-banner>
-      <div class="scrollbox-fm"/>
+      <div class="scrollbox-fm" />
       <div class="disable-scrollbars"
            style="margin-top: 14rem; padding-top: 1rem; overflow: scroll; height: inherit;">
         <v-container style="padding-bottom: 19rem;">
@@ -553,7 +553,7 @@
                    max-height="318px"
                    max-width="264px"
                    style="border-radius: 5px; box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18);"
-                   :src="`https://proxy.ixil.cc/prox?image=`+info.thumb"/>
+                   :src="`https://proxy.ixil.cc/prox?image=`+info.thumb" />
             <div>
               <v-col>
                 <h2
@@ -605,7 +605,7 @@
                           :style=" i > 0  ? 'margin-left: -9px; transform: rotateY(11deg)' : 'margin-left: 0;' "
                           style="box-shadow: -2px 1px 4px -3px #000000, -5px 2px 6px -2px rgba(0,0,0,0.74);">
                   <v-img size="2.2rem"
-                         src="https://cdn.discordapp.com/attachments/488810702190936075/761234831304556554/unknown.png"/>
+                         src="https://cdn.discordapp.com/attachments/488810702190936075/761234831304556554/unknown.png" />
                 </v-avatar>
               </v-col>
             </v-badge>
@@ -835,7 +835,7 @@
     </div>
 
     <!-- Image viewer -->
-    <img-viewer ref="viewer"/>
+    <img-viewer ref="viewer" />
 
     <!-- Preload Background image -->
     <div style="width: 0; height: 0;"

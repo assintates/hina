@@ -1,6 +1,6 @@
 <template>
   <v-col>
-    <v-divider class="TopView"/>
+    <v-divider class="TopView" />
     <div style="">
       <v-row justify="space-around" style="padding-bottom: 9rem">
         <v-container style="padding-left: 2rem; padding-right: 2rem;">
@@ -33,7 +33,7 @@
       </v-row>
 
     </div>
-    <v-divider/>
+    <v-divider />
     <v-pagination
       v-model="Page"
       :length="datan.maxres"

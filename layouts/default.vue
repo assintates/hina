@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <Snackbar/>
+    <Snackbar />
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -30,7 +30,7 @@
       fixed
       app
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-btn
         icon
       >
@@ -70,7 +70,7 @@
       </v-container>
 
 
-      <v-spacer/>
+      <v-spacer />
       <!--  User Account menu   -->
       <v-menu
         :close-on-content-click="true"
@@ -122,7 +122,7 @@
             </v-list-item>
           </v-list>
 
-          <v-divider/>
+          <v-divider />
 
           <v-list
             v-if="$auth.loggedIn"
@@ -135,7 +135,7 @@
           </v-list>
 
           <v-card-actions>
-            <v-spacer/>
+            <v-spacer />
 
             <v-btn text v-if="!$auth.loggedIn" ripple
                    @click="$auth.login(/* .... */).then(() => this.$toast.success('Logged In!'))">
