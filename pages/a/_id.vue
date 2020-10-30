@@ -395,61 +395,59 @@
 
     <!-- Body for PC/Mobile  16:9 -->
     <div v-if="!Check43Ratio()" id="overlay" ref="overlay" class="overlay fade">
-      <v-container style="width: 100vw;">
-        <v-banner
-          single-line
-          v-if="info.pollen && PollenNotify"
+      <v-banner
+        single-line
+        v-if="info.pollen && PollenNotify"
+      >
+        <v-icon
+          slot="icon"
+          color="warning"
+          size="36"
         >
-          <v-icon
-            slot="icon"
-            color="warning"
-            size="36"
+          mdi-image-filter-vintage
+        </v-icon>
+        {{ $vuetify.breakpoint.smAndDown ? '' : 'Pollen - A.I 4X Images Available' }}
+
+        <template v-slot:actions>
+          <v-btn
+            color="blue darken-4"
+            text
+            style="font-size: 1rem; font-weight: 500;"
+            @click="GetPollen"
           >
-            mdi-image-filter-vintage
-          </v-icon>
-          {{ $vuetify.breakpoint.smAndDown ? '' : 'Pollen - A.I 4X Images Available' }}
+            Access Pollen Service
+          </v-btn>
+        </template>
+      </v-banner>
 
-          <template v-slot:actions>
-            <v-btn
-              color="blue darken-4"
-              text
-              style="font-size: 1rem; font-weight: 500;"
-              @click="GetPollen"
-            >
-              Access Pollen Service
-            </v-btn>
-          </template>
-        </v-banner>
-
-        <v-banner
-          single-line
-          v-if="!info.pollen && PollenNotify"
+      <v-banner
+        single-line
+        v-if="!info.pollen && PollenNotify"
+      >
+        <v-icon
+          slot="icon"
+          color="error"
+          size="36"
         >
-          <v-icon
-            slot="icon"
-            color="error"
-            size="36"
-          >
-            mdi-exclamation-thick
-          </v-icon>
-          {{ $vuetify.breakpoint.smAndDown ? '' : 'Pollen - No AI 4X Images Available' }}
+          mdi-exclamation-thick
+        </v-icon>
+        {{ $vuetify.breakpoint.smAndDown ? '' : 'Pollen - No AI 4X Images Available' }}
 
-          <template v-slot:actions>
-            <v-btn
-              color="blue darken-4"
-              text
-              style="font-size: 1rem; font-weight: 500;"
-              @click="RequestPollen"
-            >
-              Request
-            </v-btn>
-          </template>
-        </v-banner>
-      </v-container>
+        <template v-slot:actions>
+          <v-btn
+            color="blue darken-4"
+            text
+            style="font-size: 1rem; font-weight: 500;"
+            @click="RequestPollen"
+          >
+            Request
+          </v-btn>
+        </template>
+      </v-banner>
       <div class="scrollbox-fm" />
       <div class="disable-scrollbars"
            style="margin-top: 14rem; padding-top: 1rem; overflow: scroll; height: inherit; ">
-        <v-container style="padding-bottom: 19rem; width: 100vw;">
+        <v-container style="padding-bottom: 19rem; width: 100vw; padding-right: 2rem;">
           <masonry
             :cols="{default: 4, 1000: 3, 700: 2, 400: 2}"
             :gutter="{default: '30px', 700: '15px'}"
@@ -1159,8 +1157,8 @@ export default {
 .overlay {
   position: relative;
   top: 37rem;
-//transform: translateY(40rem); margin-bottom: 0; width: fit-content; //padding: 0px; bottom: 0; height: 120rem; overflow: hidden;
-  min-height: 80vh;
+  width: 100vw;
+//transform: translateY(40rem); margin-bottom: 0; width: fit-content; //padding: 0px; bottom: 0; height: 120rem; overflow: hidden; min-height: 80vh;
 }
 
 .overlay-daig {
