@@ -78,6 +78,17 @@ export default {
   },
 
 
+  pwa: {
+    workbox: {
+      autoRegister: true,
+      dev: true,
+      clientsClaim: true,
+      skipWaiting: true,
+      offlineAnalytics: false,
+      cleanupOutdatedCaches: true,
+      cacheAssets: true
+    }
+  },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 
