@@ -9,14 +9,26 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/pwa": "^3.0.2",
+    "@nuxtjs/vuetify": "^1.11.2",
     "core-js": "^3.6.5",
+    "file-saver": "^2.0.2",
+    "jszip": "^3.5.0",
     "nuxt": "^2.14.5",
+    "v-viewer": "^1.5.1",
     "vue-horizontal-list": "^1.0.12",
+    "vue-masonry-css": "^1.0.3",
+    "vue-scrollto": "^2.19.1",
+    "vue-timers": "^2.0.4",
+    "v-img-fallback": "^0.1.5",
+    "vue-virtual-scroller": "^1.0.10",
+    "vuex": "^3.5.1",
     "vuex-persist": "^3.1.0"
   },
   "devDependencies": {
+    "@nuxt/types": "~2.14.0",
     "@nuxtjs/vuetify": "^1.11.2",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
