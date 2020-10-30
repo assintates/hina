@@ -81,7 +81,7 @@ export default {
   pwa: {
     workbox: {
       autoRegister: true,
-      dev: true,
+      dev: false,
       clientsClaim: true,
       skipWaiting: true,
       offlineAnalytics: false,
