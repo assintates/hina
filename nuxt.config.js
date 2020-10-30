@@ -78,20 +78,6 @@ export default {
   },
 
 
-  pwa: {
-    // disable the modules you don't need
-    // if you omit a module key form configuration sensible defaults will be applied
-    // manifest: false,
-
-    workbox: {
-      // by default the workbox module will not install the service worker in dev environment to avoid conflicts with HMR
-      // only set this true for testing and remember to always clear your browser cache in development
-      dev: false,
-      autoRegister: true,
-      cacheAssets: true
-    }
-  },
-
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 
