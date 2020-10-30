@@ -448,7 +448,7 @@
       </v-container>
       <div class="scrollbox-fm" />
       <div class="disable-scrollbars"
-           style="margin-top: 14rem; padding-top: 1rem; overflow: scroll; height: inherit;">
+           style="margin-top: 14rem; padding-top: 1rem; overflow: scroll; height: inherit; ">
         <v-container style="padding-bottom: 19rem; width: 100vw;">
           <masonry
             :cols="{default: 4, 1000: 3, 700: 2, 400: 2}"
