@@ -31,8 +31,10 @@
             v-for="(imager, i) in data.gliphs"
             :key="i"
           >
-            <v-img :src='`https://proxy.ixil.cc/ren?width=600&height=500&method=cover&image=`+imager'
-                   position="90% 60%" aspect-ratio="1.0001" />
+            <nuxt-link :to="`/a/`+data.id">
+              <v-img :src='`https://proxy.ixil.cc/ren?width=600&height=500&method=cover&image=`+imager'
+                     position="90% 60%" aspect-ratio="1.0001" />
+            </nuxt-link>
           </v-carousel-item>
         </v-carousel>
       </v-sheet>
@@ -74,8 +76,10 @@
             v-for="(imager, i) in data.gliphs"
             :key="i"
           >
-            <v-img :src='`https://proxy.ixil.cc/ren?width=500&height=500&method=cover&image=`+imager'
-                   position="90% 60%" aspect-ratio="1.0001" />
+            <nuxt-link :to="`/a/`+data.id">
+              <v-img :src='`https://proxy.ixil.cc/ren?width=500&height=500&method=cover&image=`+imager'
+                     position="90% 60%" aspect-ratio="1.0001" />
+            </nuxt-link>
           </v-carousel-item>
         </v-carousel>
       </v-sheet>
@@ -111,8 +115,10 @@
             v-for="(imager, i) in data.gliphs"
             :key="i"
           >
-            <v-img :src='`https://proxy.ixil.cc/ren?width=300&height=300&method=cover&image=`+imager'
-                   position="90% 60%" aspect-ratio="1.0001" />
+            <nuxt-link :to="`/a/`+data.id">
+              <v-img :src='`https://proxy.ixil.cc/ren?width=300&height=300&method=cover&image=`+imager'
+                     position="90% 60%" aspect-ratio="1.0001" />
+            </nuxt-link>
           </v-carousel-item>
         </v-carousel>
       </v-sheet>
