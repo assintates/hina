@@ -130,12 +130,14 @@
 
     </div>
     <v-divider v-if="SearchState" />
-    <v-pagination v-if="SearchState"
-                  v-model="Page"
-                  :length="Pagination"
-                  :total-visible="7"
-                  @input="SearchUp"
-    ></v-pagination>
+    <v-container style="width: 70vw;">
+      <v-pagination v-if="SearchState"
+                    v-model="Page"
+                    :length="Pagination"
+                    :total-visible="7"
+                    @input="SearchUp"
+      ></v-pagination>
+    </v-container>
   </v-col>
 </template>
 
