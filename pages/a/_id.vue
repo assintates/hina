@@ -905,11 +905,12 @@ export default {
           { name: 'og:url', content: `https://app.ixil.cc/a/${this.info.id}` },
           { name: 'og:description', content: this.info.edata },
           { name: 'og:title', content: 'Bloom | Hina - ' + this.info.name },
-          { name: 'og:image', content: this.info.thumb },
+          { name: 'og:image', content: `https://proxy.ixil.cc/prox?image=` + this.info.thumb },
           { name: 'og:site_name', content: 'Bloom | Hina - ' + this.info.name },
           { name: 'og:type', content: 'website' },
           { name: 'twitter:card', content: 'summary_large_image' },
           { name: 'twitter:url', content: `https://app.ixil.cc/a/${this.info.id}` },
+          { name: 'twitter:image', content: `https://proxy.ixil.cc/prox?image=` + this.info.thumb },
           { name: 'twitter:title', content: 'Bloom | Hina - ' + this.info.name },
           { name: 'twitter:description', content: this.info.edata },
           {
