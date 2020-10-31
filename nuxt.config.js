@@ -79,6 +79,11 @@ export default {
 
 
   pwa: {
+    manifest: {
+      name: 'Bloom - Hina',
+      lang: 'en',
+      useWebmanifestExtension: false
+    },
     workbox: {
       autoRegister: true,
       dev: false,
