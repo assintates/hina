@@ -27,6 +27,20 @@
       }
     },
     {
+      "src": "/icon.png",
+      "dest": "/icon.png",
+      "headers": {
+        "cache-control": "public, max-age=43200"
+      }
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico",
+      "headers": {
+        "cache-control": "public, max-age=43200"
+      }
+    },
+    {
       "src": "/README.md",
       "dest": "/README.md"
     },
