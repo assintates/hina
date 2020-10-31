@@ -894,6 +894,33 @@ export default {
       })
   },
 
+  head() {
+    if (this.info !== undefined) {
+      return {
+        title: 'Bloom | Hina - ' + this.info.name,
+        meta: [
+          { charset: 'utf-8' },
+          { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+          { hid: 'description', name: 'description', content: this.info.edata },
+          { name: 'og:url', content: `https://app.ixil.cc/a/${this.info.id}` },
+          { name: 'og:description', content: this.info.edata },
+          { name: 'og:title', content: 'Bloom | Hina - ' + this.info.name },
+          { name: 'og:image', content: this.info.thumb },
+          { name: 'og:site_name', content: 'Bloom | Hina - ' + this.info.name },
+          { name: 'og:type', content: 'website' },
+          { name: 'twitter:card', content: 'summary_large_image' },
+          { name: 'twitter:url', content: `https://app.ixil.cc/a/${this.info.id}` },
+          { name: 'twitter:title', content: 'Bloom | Hina - ' + this.info.name },
+          { name: 'twitter:description', content: this.info.edata },
+          {
+            name: 'keywords',
+            content: `Bloom | Hina  Free Open Source Idol/Porno Gallery ${this.info.name} ${this.info.edata}`
+          }
+        ]
+      }
+    }
+  },
+
   computed: {
     ...mapGetters({
       DownloadState: 'download/GET_DOWNLOAD_STATE',
