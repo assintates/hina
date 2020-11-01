@@ -323,9 +323,7 @@ export default {
                 console.log('PUSHED NOTIFICATION ID:  ' + res.data.hash)
               })
           } else {
-            this.$OneSignal.push(() => {
-              OneSignal.showNativePrompt()
-            })
+            this.$OneSignal.showNativePrompt()
           }
         })
       })
