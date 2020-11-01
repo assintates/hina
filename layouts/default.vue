@@ -310,8 +310,8 @@ export default {
     if (this.$auth.loggedIn) {
 
       // Inside page components
-      this.$OneSignal.push(() => {
-        this.$OneSignal.isPushNotificationsEnabled((isEnabled) => {
+      OneSignal.push(() => {
+        OneSignal.isPushNotificationsEnabled((isEnabled) => {
           if (isEnabled) {
             axios.get(`https://api.ixil.cc/bloom/strat/user/get/emailhash?email=` + this.$auth.user.email, {
               headers: {
@@ -323,8 +323,8 @@ export default {
                 console.log('PUSHED NOTIFICATION ID:  ' + res.data.hash)
               })
           } else {
-            this.$OneSignal.push(() => {
-              this.$OneSignal.showNativePrompt()
+            OneSignal.push(() => {
+              OneSignal.showNativePrompt()
             })
           }
         })
