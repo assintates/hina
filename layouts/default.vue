@@ -68,6 +68,18 @@
           </v-icon>
         </v-btn>
       </v-container>
+      <v-container v-if="notific">
+        <v-btn icon :onclick="GetNotified">
+          <v-icon
+            class="search-field-icon"
+            color="error"
+            size="1.5rem;"
+            style="width: 3rem!important; height: 2.3rem!important;"
+          >
+            mdi-exclamation-thick
+          </v-icon>
+        </v-btn>
+      </v-container>
 
 
       <v-spacer />
@@ -245,6 +257,7 @@ export default {
       drawer: false,
       fixed: true,
       fixers: [],
+      notific: true,
 
       rules: {
         email: value => {
@@ -307,6 +320,13 @@ export default {
   watch: {},
 
   mounted() {
+    this.$OneSignal.push(() => {
+      this.$OneSignal.isPushNotificationsEnabled((isEnabled) => {
+        if (!isEnabled) {
+          this.notific = false
+        }
+      })
+    })
     if (this.$auth.loggedIn) {
       // Inside page components
       this.$OneSignal.push(() => {
@@ -338,6 +358,12 @@ export default {
       return 'rgba(' + (hex = hex.replace('#', '')).match(new RegExp('(.{' + hex.length / 3 + '})', 'g')).map(function(l) {
         return parseInt(hex.length % 2 ? l + l : l, 16)
       }).concat(opacity || 1).join(',') + ')'
+    },
+
+    GetNotified() {
+      this.$OneSignal.push(() => {
+        this.$OneSignal.registerForPushNotifications()
+      })
     },
 
     /**
