@@ -992,13 +992,25 @@ export default {
     },
 
     RequestPollen() {
-      axios
-        .get('https://api.ixil.cc/bloom/hina/pollen/request?id=' + this.info.id)
-        .then(response => {
-          this.$store.dispatch('snackbar/POP_SNACKBAR', 'Requested A.I 4X Image processing, Come back in 24 Hours.')
-        }).catch(function(error) {
-        this.$store.dispatch('snackbar/POP_SNACKBAR', 'Failed to Request A.I 4X Images, try later.')
+      axios.get(`https://api.ixil.cc/bloom/strat/user/get/emailhash?email=` + this.$auth.user.email, {
+        headers: {
+          Authorization: this.$auth.getToken('auth0') //the token is a variable which holds the token
+        }
       })
+        .then((res) => {
+          axios
+            .get(`https://api.ixil.cc/bloom/hina/pollen/request?id=${this.info.id}&user=${res.data.hash}`)
+            .then(response => {
+              this.$store.dispatch('snackbar/POP_SNACKBAR', 'Requested A.I 4X Image processing, Come back in 24 Hours.')
+            })
+            .catch(function(error) {
+              this.$store.dispatch('snackbar/POP_SNACKBAR', 'Failed to Request A.I 4X Images, try later.')
+            })
+        })
+        .catch(function(error) {
+          this.$store.dispatch('snackbar/POP_SNACKBAR', 'Failed to Request A.I 4X Images, try later.')
+        })
+
     },
     GetPollen() {
       if (this.$auth.loggedIn) {
