@@ -319,9 +319,8 @@ export default {
               }
             })
               .then((res) => {
-                OneSignal.sendTag('HIU', res.data.hash, function(tagsSent) {
-                  console.log('PUSHED NOTIFICATION HIU: ' + res.data.hash + '\n ' + tagsSent)
-                })
+                OneSignal.setExternalUserId(res.data.hash)
+                console.log('PUSHED NOTIFICATION ID: ' + res.data.hash)
               })
           } else {
             this.$OneSignal.push(() => {
