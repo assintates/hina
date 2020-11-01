@@ -88,8 +88,18 @@ export default {
     init: {
       appId: '669e9631-22a6-4f83-bb42-8665ec81fa85',
       allowLocalhostAsSecureOrigin: true,
+      requiresUserPrivacyConsent: false,
+      autoResubscribe: false,
       welcomeNotification: {
-        disable: false
+        disable: true
+      },
+      promptOptions: {
+        slidedown: {
+          enabled: true,
+          autoPrompt: true,
+          timeDelay: 5,
+          pageViews: 1
+        }
       }
     },
 
