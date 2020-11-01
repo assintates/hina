@@ -307,9 +307,6 @@ export default {
   watch: {},
 
   mounted() {
-    this.$OneSignal.push(() => {
-      this.$OneSignal.registerForPushNotifications()
-    })
     if (this.$auth.loggedIn) {
       // Inside page components
       this.$OneSignal.push(() => {

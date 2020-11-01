@@ -93,14 +93,7 @@ export default {
       welcomeNotification: {
         disable: true
       },
-      promptOptions: {
-        slidedown: {
-          enabled: true,
-          autoPrompt: true,
-          timeDelay: 5,
-          pageViews: 1
-        }
-      }
+      autoRegister: true
     },
 
     // Use CDN
