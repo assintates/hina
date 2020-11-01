@@ -319,9 +319,8 @@ export default {
               }
             })
               .then((res) => {
-                this.$OneSignal.setEmail(this.$auth.user.email, {
-                  emailAuthHash: res.data.hash
-                })
+                OneSignal.setExternalUserId(res.data.hash)
+                console.log('PUSHED NOTIFICATION ID: ' + res.data.hash)
               })
           } else {
             this.$OneSignal.push(() => {
