@@ -306,6 +306,22 @@ import Snackbar from '@/components/Snackbar'
     watch: {},
 
     mounted() {
+      // Inside page components
+      this.$OneSignal.push(() => {
+        this.$OneSignal.showNativePrompt()
+      })
+      // Inside page components
+      this.$OneSignal.push(() => {
+        this.$OneSignal.isPushNotificationsEnabled((isEnabled) => {
+          if (isEnabled) {
+            console.log('Push notifications are enabled!')
+          } else {
+            this.$OneSignal.push(() => {
+              this.$OneSignal.showNativePrompt()
+            })
+          }
+        })
+      })
     },
 
     beforeDestroy() {
