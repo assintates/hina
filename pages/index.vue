@@ -66,6 +66,35 @@ export default {
         this.itemsa = res.data.data
       })
 
+    // Inside page components
+    this.$OneSignal.push(() => {
+      this.$OneSignal.showNativePrompt((isEnabled) => {
+        if (isEnabled) {
+          console.log('Push notifications are enabled!')
+        } else {
+          console.log('Push notifications are not enabled yet.')
+        }
+      })
+    })
+    // Inside page components
+    this.$OneSignal.push(() => {
+      this.$OneSignal.isPushNotificationsEnabled((isEnabled) => {
+        if (isEnabled) {
+          console.log('Push notifications are enabled!')
+        } else {
+          this.$OneSignal.push(() => {
+            this.$OneSignal.showNativePrompt((isEnabled) => {
+              if (isEnabled) {
+                console.log('Push notifications are enabled!')
+              } else {
+                console.log('Push notifications are not enabled yet.')
+              }
+            })
+          })
+        }
+      })
+    })
+
   },
   methods: {}
 }
