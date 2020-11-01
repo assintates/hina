@@ -309,7 +309,7 @@ export default {
   mounted() {
     if (this.$auth.loggedIn) {
       this.$OneSignal.push(() => {
-        this.$OneSignal.showNativePrompt()
+        this.$OneSignal.registerForPushNotifications()
       })
       // Inside page components
       this.$OneSignal.push(() => {
