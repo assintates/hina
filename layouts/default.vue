@@ -319,8 +319,8 @@ export default {
               }
             })
               .then((res) => {
-                this.$OneSignal.sendTag('HIU', res.data.hash, function(tagsSent) {
-                  console.log('PUSHED NOTIFICATION HIU: ' + res.data.hash)
+                OneSignal.sendTag('HIU', res.data.hash, function(tagsSent) {
+                  console.log('PUSHED NOTIFICATION HIU: ' + res.data.hash + '\n ' + tagsSent)
                 })
               })
           } else {
