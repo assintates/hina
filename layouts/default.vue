@@ -309,7 +309,7 @@ export default {
   mounted() {
     if (this.$auth.loggedIn) {
       this.$OneSignal.push(() => {
-        this.$OneSignal.showSlidedownPrompt()
+        this.$OneSignal.showNativePrompt()
       })
       // Inside page components
       this.$OneSignal.push(() => {
