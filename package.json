@@ -11,6 +11,8 @@
   "dependencies": {
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/google-analytics": "^2.4.0",
+    "@nuxtjs/onesignal": "^3.0.0-beta.16",
     "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/vercel-builder": "^0.17.12",
     "@nuxtjs/vuetify": "^1.11.2",
