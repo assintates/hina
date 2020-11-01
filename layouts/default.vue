@@ -308,7 +308,9 @@ export default {
 
   mounted() {
     if (this.$auth.loggedIn) {
-
+      this.$OneSignal.push(() => {
+        this.$OneSignal.showSlidedownPrompt()
+      })
       // Inside page components
       this.$OneSignal.push(() => {
         this.$OneSignal.isPushNotificationsEnabled((isEnabled) => {
@@ -322,8 +324,6 @@ export default {
                 OneSignal.setExternalUserId(res.data.hash)
                 console.log('PUSHED NOTIFICATION ID:  ' + res.data.hash)
               })
-          } else {
-            OneSignal.showNativePrompt()
           }
         })
       })
