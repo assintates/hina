@@ -27,6 +27,21 @@
       }
     },
     {
+      "src": "/OneSignalSDKWorker.js",
+      "dest": "/OneSignalSDKWorker.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "Service-Worker-Allowed": "/"
+      }
+    },
+    {
+      "src": "/OneSignalSDKUpdaterWorker.js",
+      "dest": "/OneSignalSDKUpdaterWorker.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable"
+      }
+    },
+    {
       "src": "/icon.png",
       "dest": "/icon.png",
       "headers": {

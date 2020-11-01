@@ -68,13 +68,7 @@ export default {
 
     // Inside page components
     this.$OneSignal.push(() => {
-      this.$OneSignal.showNativePrompt((isEnabled) => {
-        if (isEnabled) {
-          console.log('Push notifications are enabled!')
-        } else {
-          console.log('Push notifications are not enabled yet.')
-        }
-      })
+      this.$OneSignal.showNativePrompt()
     })
     // Inside page components
     this.$OneSignal.push(() => {
@@ -83,13 +77,7 @@ export default {
           console.log('Push notifications are enabled!')
         } else {
           this.$OneSignal.push(() => {
-            this.$OneSignal.showNativePrompt((isEnabled) => {
-              if (isEnabled) {
-                console.log('Push notifications are enabled!')
-              } else {
-                console.log('Push notifications are not enabled yet.')
-              }
-            })
+            this.$OneSignal.showNativePrompt()
           })
         }
       })
