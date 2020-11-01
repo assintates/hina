@@ -320,7 +320,7 @@ export default {
             })
               .then((res) => {
                 OneSignal.setExternalUserId(res.data.hash)
-                console.log('PUSHED NOTIFICATION ID: ' + res.data.hash)
+                console.log('PUSHED NOTIFICATION ID:  ' + res.data.hash)
               })
           } else {
             this.$OneSignal.push(() => {
