@@ -20,7 +20,7 @@
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title"/>
+            <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -152,7 +152,7 @@
 
     </v-app-bar>
     <v-main>
-      <nuxt/>
+      <nuxt />
     </v-main>
     <v-navigation-drawer
       v-model="rightDrawer"
@@ -213,10 +213,10 @@
             :src="'https://proxy.ixil.cc/prox?image='+item.thumb"
           >
           </v-img>
-          <v-card-subtitle class="pb-0">{{item.idol}}</v-card-subtitle>
+          <v-card-subtitle class="pb-0">{{ item.idol }}</v-card-subtitle>
 
           <v-card-text class="text--primary">
-            {{item.name}}
+            {{ item.name }}
           </v-card-text>
         </v-card>
       </v-col>
@@ -234,87 +234,95 @@
 
 import { mapGetters, mapState } from 'vuex'
 import Snackbar from '@/components/Snackbar'
+import axios from 'axios'
 
-  export default {
-    components: { Snackbar },
-    data() {
-      return {
-        search_overlay: false,
-        clipped: false,
-        drawer: false,
-        fixed: true,
-        fixers: [],
+export default {
+  components: { Snackbar },
+  data() {
+    return {
+      search_overlay: false,
+      clipped: false,
+      drawer: false,
+      fixed: true,
+      fixers: [],
 
-        rules: {
-          email: value => {
-            const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            return pattern.test(value) || 'Invalid e-mail.'
-          }
-        },
-        items: [
-          {
-            icon: 'mdi-apps',
-            title: 'Bloom',
-            to: '/'
-          },
-          {
-            icon: 'mdi-spa',
-            title: 'HINA',
-            to: '/hina'
-          }
-          ,
-          {
-            icon: 'mdi-leaf',
-            title: 'MISHA',
-            to: '/misha'
-          }
-        ],
-        miniVariant: false,
-        right: true,
-        rightDrawer: false,
-        title: 'Bloom -  B.A-0.3'
-      }
-    },
-
-    computed: {
-      ...mapGetters({
-        RecentViews: 'history/GET_HISTORY_DATA',
-        DownloadState: 'download/GET_DOWNLOAD_STATE',
-        DownloadProgress: 'download/GET_DOWNLOAD_PROGRESS',
-        DownloadTotal: 'download/GET_DOWNLOAD_TOTAL',
-        SearchSources: 'search/GET_SOURCES_DATA'
-      }),
-
-
-      progress() {
-        return Math.min(100, this.pwvalue1.length * 10)
+      rules: {
+        email: value => {
+          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          return pattern.test(value) || 'Invalid e-mail.'
+        }
       },
-      color() {
-        return ['error', 'warning', 'success'][Math.floor(this.progress / 40)]
-      }
+      items: [
+        {
+          icon: 'mdi-apps',
+          title: 'Bloom',
+          to: '/'
+        },
+        {
+          icon: 'mdi-spa',
+          title: 'HINA',
+          to: '/hina'
+        }
+        ,
+        {
+          icon: 'mdi-leaf',
+          title: 'MISHA',
+          to: '/misha'
+        }
+      ],
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
+      title: 'Bloom -  B.A-0.3'
+    }
+  },
+
+  computed: {
+    ...mapGetters({
+      RecentViews: 'history/GET_HISTORY_DATA',
+      DownloadState: 'download/GET_DOWNLOAD_STATE',
+      DownloadProgress: 'download/GET_DOWNLOAD_PROGRESS',
+      DownloadTotal: 'download/GET_DOWNLOAD_TOTAL',
+      SearchSources: 'search/GET_SOURCES_DATA'
+    }),
+
+
+    progress() {
+      return Math.min(100, this.pwvalue1.length * 10)
     },
+    color() {
+      return ['error', 'warning', 'success'][Math.floor(this.progress / 40)]
+    }
+  },
 
-    created() {
+  created() {
 
-    },
+  },
 
-    beforeMount() {
-      this.$store.dispatch('history/LOAD_HISTORY')
-      this.$store.dispatch('search/LOAD_SOURCES_DATA')
-    },
+  beforeMount() {
+    this.$store.dispatch('history/LOAD_HISTORY')
+    this.$store.dispatch('search/LOAD_SOURCES_DATA')
+  },
 
-    watch: {},
+  watch: {},
 
-    mounted() {
-      // Inside page components
-      this.$OneSignal.push(() => {
-        this.$OneSignal.showNativePrompt()
-      })
+  mounted() {
+    if (this.$auth.loggedIn) {
+
       // Inside page components
       this.$OneSignal.push(() => {
         this.$OneSignal.isPushNotificationsEnabled((isEnabled) => {
           if (isEnabled) {
-            console.log('Push notifications are enabled!')
+            axios.get(`https://api.ixil.cc/bloom/strat/user/get/emailhash?email=` + this.$auth.user.email, {
+              headers: {
+                Authorization: this.$auth.getToken('auth0') //the token is a variable which holds the token
+              }
+            })
+              .then((res) => {
+                this.$OneSignal.setEmail(this.$auth.user.email, {
+                  emailAuthHash: res.data.hash
+                })
+              })
           } else {
             this.$OneSignal.push(() => {
               this.$OneSignal.showNativePrompt()
@@ -322,33 +330,37 @@ import Snackbar from '@/components/Snackbar'
           }
         })
       })
-    },
-
-    beforeDestroy() {
-    },
-
-    methods: {
-      hexToRgb(hex, opacity) {
-        return 'rgba(' + (hex = hex.replace('#', '')).match(new RegExp('(.{' + hex.length / 3 + '})', 'g')).map(function(l) {
-          return parseInt(hex.length % 2 ? l + l : l, 16)
-        }).concat(opacity || 1).join(',') + ')'
-      },
-
-      /**
-       * @return {string}
-       */
-      ESize() {
-        if (this.$vuetify.breakpoint.smAndDown) return '20rem'
-        else return '48rem'
-      },
-
-      RegDialog() {
-        this.dialog = !this.dialog
-        this.dialog2 = !this.dialog2
-      }
 
     }
+    // Inside page components
+
+  },
+
+  beforeDestroy() {
+  },
+
+  methods: {
+    hexToRgb(hex, opacity) {
+      return 'rgba(' + (hex = hex.replace('#', '')).match(new RegExp('(.{' + hex.length / 3 + '})', 'g')).map(function(l) {
+        return parseInt(hex.length % 2 ? l + l : l, 16)
+      }).concat(opacity || 1).join(',') + ')'
+    },
+
+    /**
+     * @return {string}
+     */
+    ESize() {
+      if (this.$vuetify.breakpoint.smAndDown) return '20rem'
+      else return '48rem'
+    },
+
+    RegDialog() {
+      this.dialog = !this.dialog
+      this.dialog2 = !this.dialog2
+    }
+
   }
+}
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&family=Aldrich&family=Michroma&display=swap');

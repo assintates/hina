@@ -53,7 +53,6 @@ export const actions = {
         }
       })
         .then(function(response) {
-          console.log(response.data)
           vuexContext.commit('SET_FAV_DATA', response.data.rating)
         })
 
@@ -75,7 +74,6 @@ export const actions = {
   },
 
   ADD_FAV(vuexContext, post) {
-    console.log('CALLED ADD FAv')
     if (this.$auth.loggedIn) {
       axios.get(`https://api.ixil.cc/bloom/strat/user/add?id=${post.id}&marks=${post.marks}&picture=${this.$auth.user.picture}&email=${this.$auth.user.email.trim()}`, {
         headers: {
