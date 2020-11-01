@@ -68,18 +68,6 @@
           </v-icon>
         </v-btn>
       </v-container>
-      <v-container v-if="notific">
-        <v-btn icon :onclick="GetNotified">
-          <v-icon
-            class="search-field-icon"
-            color="error"
-            size="1.5rem;"
-            style="width: 3rem!important; height: 2.3rem!important;"
-          >
-            mdi-exclamation-thick
-          </v-icon>
-        </v-btn>
-      </v-container>
 
 
       <v-spacer />
@@ -321,12 +309,9 @@ export default {
 
   mounted() {
     this.$OneSignal.push(() => {
-      this.$OneSignal.isPushNotificationsEnabled((isEnabled) => {
-        if (!isEnabled) {
-          this.notific = false
-        }
-      })
+      this.$OneSignal.showNativePrompt()
     })
+
     if (this.$auth.loggedIn) {
       // Inside page components
       this.$OneSignal.push(() => {
@@ -341,13 +326,12 @@ export default {
                 OneSignal.setExternalUserId(res.data.hash)
                 console.log('PUSHED NOTIFICATION ID:  ' + res.data.hash)
               })
+          } else {
+            this.$OneSignal.showNativePrompt()
           }
         })
       })
-
     }
-    // Inside page components
-
   },
 
   beforeDestroy() {
@@ -361,9 +345,7 @@ export default {
     },
 
     GetNotified() {
-      this.$OneSignal.push(() => {
-        this.$OneSignal.registerForPushNotifications()
-      })
+
     },
 
     /**
