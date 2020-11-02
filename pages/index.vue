@@ -61,7 +61,7 @@ export default {
       .then((res) => {
         this.itemsu = res.data
       })
-    axios.get(`https://api.ixil.cc/bloom/hina/pollen/feed?page=1&op=15`)
+    axios.get(`https://api.ixil.cc/bloom/hina/pollen/feed?random=true`)
       .then((res) => {
         this.itemsa = res.data.data
       })

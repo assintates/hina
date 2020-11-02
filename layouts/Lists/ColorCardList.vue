@@ -257,9 +257,8 @@
           },
           item: {
             // css class to inject into each individual item
-            class: 'ccardl',
             // padding between each item
-            padding: 25
+            padding: 20
           },
           navigation: {
             // when to show navigation
@@ -267,11 +266,12 @@
             color: '#000'
           }
         },
-
-
       }
     },
 
+    mounted() {
+      this.options.item.padding = 25
+    },
     methods: {
       /**
        * @return {string}

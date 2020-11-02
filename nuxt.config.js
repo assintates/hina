@@ -31,11 +31,11 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
-    '@nuxtjs/google-analytics',
     '@nuxtjs/onesignal',
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    '@nuxtjs/google-analytics'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -47,7 +47,7 @@ export default {
     '@nuxtjs/pwa',
 
     '@nuxtjs/auth',
-
+    '@nuxtjs/google-analytics',
     'vue-scrollto/nuxt'
   ],
 
