@@ -259,7 +259,7 @@
             // css class to inject into each individual item
             class: 'ccardl',
             // padding between each item
-            padding: 23
+            padding: 25
           },
           navigation: {
             // when to show navigation
