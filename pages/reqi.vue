@@ -5,7 +5,7 @@
         v-model="textd"
         color="success"
       ></v-text-field>
-      <v-btn onclick="reqest">
+      <v-btn @click="GetData">
         REQUEST
       </v-btn>
     </v-container>
@@ -24,11 +24,16 @@ export default {
   },
 
   methods: {
-    reqest() {
-      axios.get(`https://api.ixil.cc/bloom/misha/reqi?id=${this.textd}`)
-        .then((res) => {
-          this.textd = ''
-        })
+
+    GetData() {
+      let strap = this.textd
+      if (strap !== undefined && strap !== null) {
+        let regexp = /^.*?\.com\/(.*?)\/.*$/
+        axios.get(`https://api.ixil.cc/bloom/misha/reqi?id=${regexp.exec(strap)[1]}`)
+          .then((res) => {
+            this.textd = ''
+          })
+      }
     }
   }
 }
