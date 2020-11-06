@@ -178,7 +178,7 @@
           <div
             class="pl-3"
             style="height: 10rem; background-size: 50% 100%; border-radius: 5px; text-decoration: none;"
-            :style="`background: linear-gradient(286deg, ${hexToRgb(item.color[1], 0.4553571770505077)} 3%, ${hexToRgb(item.color[1], 0.010343171448266806)} 19%, ${hexToRgb(item.color[0], 0.819502835313813)} 52%, ${hexToRgb(item.color[0], 1)} 64%,  ${hexToRgb(item.color[0], 0.9699230033810399)} 80%, ${hexToRgb(item.color[0], 1)} 99%), url(https://proxy.ixil.cc/ren?method=cover&width=500&height=300&image=${item.thumb}&width=700&height=400&method=cover) right no-repeat`">
+            :style="`background: linear-gradient(286deg, ${hexToRgb(item.color[1], 0.4553571770505077)} 3%, ${hexToRgb(item.color[1], 0.010343171448266806)} 19%, ${hexToRgb(item.color[0], 0.819502835313813)} 52%, ${hexToRgb(item.color[0], 1)} 64%,  ${hexToRgb(item.color[0], 0.9699230033810399)} 80%, ${hexToRgb(item.color[0], 1)} 99%), url(https://proxy.ixil.cc/ren?image=${item.thumb}&width=700&height=400&method=cover) right no-repeat`">
 
             <v-col no-gutters style="text-decoration: none !important;">
               <div
