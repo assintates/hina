@@ -174,7 +174,7 @@
         cols="12"
         v-if="$vuetify.breakpoint.mdAndUp"
       >
-        <nuxt-link style="text-decoration: none;" :to="`/a/`+item.id">
+        <nuxt-link style="text-decoration: none;" :to="item.source === 'HINA'? `/a/${item.id}` : `/i/${item.id}`">
           <div
             class="pl-3"
             style="height: 10rem; background-size: 50% 100%; border-radius: 5px; text-decoration: none;"
@@ -205,7 +205,7 @@
         <v-card
           :color="item.color[2]"
           dark
-          :to="`/a/`+item.id"
+          :to="item.source === 'HINA'? `/a/${item.id}` : `/i/${item.id}`"
         >
           <v-img
             class="white--text align-end"
