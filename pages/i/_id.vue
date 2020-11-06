@@ -982,14 +982,14 @@ export default {
     },
 
     RequestPollen() {
-      axios.get(`https://api.ixil.cc/bloom/strat/user/get/emailhash?email=` + this.$auth.user.email, {
+      axios.get(`https://app.ixil.cc/api/bloom/strat/user/get/emailhash?email=` + this.$auth.user.email, {
         headers: {
           Authorization: this.$auth.getToken('auth0') //the token is a variable which holds the token
         }
       })
         .then((res) => {
           axios
-            .get(`https://api.ixil.cc/bloom/hina/pollen/request?id=${this.info.id}&user=${res.data.hash}`)
+            .get(`https://app.ixil.cc/api/bloom/hina/pollen/request?id=${this.info.id}&user=${res.data.hash}`)
             .then(response => {
               this.$store.dispatch('snackbar/POP_SNACKBAR', 'Requested A.I 4X Image processing, Come back in 24 Hours.')
             })
@@ -1005,7 +1005,7 @@ export default {
     GetPollen() {
       if (this.$auth.loggedIn) {
         axios
-          .get('https://api.ixil.cc/bloom/hina/pollen?id=' + this.info.id, {
+          .get('https://app.ixil.cc/api/bloom/hina/pollen?id=' + this.info.id, {
             headers: {
               Authorization: this.$auth.getToken('auth0') //the token is a variable which holds the token
             }

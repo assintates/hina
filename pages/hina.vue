@@ -47,25 +47,25 @@ export default {
   },
 
   asyncData({ params }) {
-    return axios.get(`https://api.ixil.cc/bloom/hina/random`)
+    return axios.get(`https://app.ixil.cc/api/bloom/hina/random`)
       .then((res) => {
         return { itemsd: res.data }
       })
   },
   mounted() {
-    axios.get(`https://api.ixil.cc/bloom/hina?page=1&op=16`)
+    axios.get(`https://app.ixil.cc/api/bloom/hina?page=1&op=16`)
       .then((res) => {
         this.itemsn = res.data.data
       })
-    axios.get(`https://api.ixil.cc/bloom/hina/random?many=true&count=15`)
+    axios.get(`https://app.ixil.cc/api/bloom/hina/random?many=true&count=15`)
       .then((res) => {
         this.itemsu = res.data
       })
-    axios.get(`https://api.ixil.cc/bloom/hina/random?many=true&count=15`)
+    axios.get(`https://app.ixil.cc/api/bloom/hina/random?many=true&count=15`)
       .then((res) => {
         this.itemse = res.data
       })
-    axios.get(`https://api.ixil.cc/bloom/hina/pollen/feed?random=true`)
+    axios.get(`https://app.ixil.cc/api/bloom/hina/pollen/feed?random=true`)
       .then((res) => {
         this.itemsa = res.data.data
       })

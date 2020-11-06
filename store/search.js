@@ -69,7 +69,7 @@ export const actions = {
       'ALL'
     )
 
-    axios.get('https://api.ixil.cc/bloom/hina/sources')
+    axios.get('https://app.ixil.cc/api/bloom/hina/sources')
       .then(function(response) {
         vuexContext.commit('SET_SOURCES_DATA',
           'ALL'
@@ -101,7 +101,7 @@ export const actions = {
         })
       })
 
-    axios.get('https://api.ixil.cc/bloom/hina/idols')
+    axios.get('https://app.ixil.cc/api/bloom/hina/idols')
       .then(function(response) {
           vuexContext.commit('SET_IDOLS_DATA',
             response.data
