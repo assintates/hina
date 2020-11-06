@@ -31,7 +31,7 @@ export const actions = {
 
   LOAD_HISTORY(vuexContext) {
     if (this.$auth.loggedIn) {
-      axios.get('https://app.ixil.cc/api/api/bloom/strat/user/get/history?email=' + this.$auth.user.email.trim(), {
+      axios.get('https://app.ixil.cc/api/bloom/strat/user/get/history?email=' + this.$auth.user.email.trim(), {
         headers: {
           Authorization: this.$auth.getToken('auth0') //the token is a variable which holds the token
         }
