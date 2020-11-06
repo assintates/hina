@@ -25,43 +25,84 @@ export const mutations = {
 export const actions = {
 
   async DOWNLOAD(vuexContext, data) {
-    if (data.en.gliphs.length > 0) {
-      let errors = []
-      vuexContext.commit('SET_DOWNLOAD_STATE', true)
-      vuexContext.commit('SET_DOWNLOAD_TOTAL', data.indexes.length)
-      let zip = new JSZip()
-      zip.file('bloom.petal', JSON.stringify({ data: data, errors: errors }, null, '\t'))
-      let img = zip.folder('Petals')
-      let i = 0
-      for (i; i < data.indexes.length; i++) {
-        let downloadurl = data.en.gliphs[data.indexes[i] - 1]
-        await axios
-          .get('https://proxy.ixil.cc/prox?dd=true&image=' + downloadurl, {  // uses proxy
-            responseType: 'arraybuffer'
-          })
-          .then(response => {
-            img.file(`petal-${i}.jpg`, response.data, { arraybuffer: true })
-          }).catch(function(error) {
-            errors.push({ image: downloadurl, exception: { message: error.message, type: name } })
-            zip.file('bloom.petal', JSON.stringify({ data: data, errors: errors }, null, '\t'))
-          }).finally(() => {
-            vuexContext.commit('SET_DOWNLOAD_PROGRESS', i)
-          })
-      }
-
-      while (i < data.indexes.length) {
-      }
-      zip.generateAsync({
-        type: 'blob', comment: `Downloaded from Bloom  [https://app.ixil.cc/a/${data.en.id}]`, compression: 'DEFLATE',
-        compressionOptions: {
-          level: 1  // compression level - store
+    if (data.raw) {
+      if (data.data.length > 0) {
+        let errors = []
+        vuexContext.commit('SET_DOWNLOAD_STATE', true)
+        vuexContext.commit('SET_DOWNLOAD_TOTAL', data.data.length)
+        let zip = new JSZip()
+        zip.file('bloom.petal', JSON.stringify({ data: data, errors: errors }, null, '\t'))
+        let img = zip.folder('Petals')
+        let i = 0
+        for (i; i < data.data.length; i++) {
+          let downloadurl = data.data[i]
+          await axios
+            .get('https://proxy.ixil.cc/prox?dd=true&image=' + downloadurl, {  // uses proxy
+              responseType: 'arraybuffer'
+            })
+            .then(response => {
+              img.file(`petal-${i}.jpg`, response.data, { arraybuffer: true })
+            }).catch(function(error) {
+              errors.push({ image: downloadurl, exception: { message: error.message, type: name } })
+              zip.file('bloom.petal', JSON.stringify({ data: data, errors: errors }, null, '\t'))
+            }).finally(() => {
+              vuexContext.commit('SET_DOWNLOAD_PROGRESS', i)
+            })
         }
-      })
-        .then(function(content) {
-          saveAs(content, `petals-${data.en.id}.zip`)
-        }).finally(function() {
-        vuexContext.commit('SET_DOWNLOAD_STATE', false)
-      })
+
+        while (i < data.data.length) {
+        }
+        zip.generateAsync({
+          type: 'blob', comment: `Downloaded from Bloom  [https://app.ixil.cc/i/${data.en.id}]`, compression: 'DEFLATE',
+          compressionOptions: {
+            level: 1  // compression level - store
+          }
+        })
+          .then(function(content) {
+            saveAs(content, `petals-${data.en.id}.zip`)
+          }).finally(function() {
+          vuexContext.commit('SET_DOWNLOAD_STATE', false)
+        })
+      }
+    } else {
+      if (data.en.gliphs.length > 0) {
+        let errors = []
+        vuexContext.commit('SET_DOWNLOAD_STATE', true)
+        vuexContext.commit('SET_DOWNLOAD_TOTAL', data.indexes.length)
+        let zip = new JSZip()
+        zip.file('bloom.petal', JSON.stringify({ data: data, errors: errors }, null, '\t'))
+        let img = zip.folder('Petals')
+        let i = 0
+        for (i; i < data.indexes.length; i++) {
+          let downloadurl = data.en.gliphs[data.indexes[i] - 1]
+          await axios
+            .get('https://proxy.ixil.cc/prox?dd=true&image=' + downloadurl, {  // uses proxy
+              responseType: 'arraybuffer'
+            })
+            .then(response => {
+              img.file(`petal-${i}.jpg`, response.data, { arraybuffer: true })
+            }).catch(function(error) {
+              errors.push({ image: downloadurl, exception: { message: error.message, type: name } })
+              zip.file('bloom.petal', JSON.stringify({ data: data, errors: errors }, null, '\t'))
+            }).finally(() => {
+              vuexContext.commit('SET_DOWNLOAD_PROGRESS', i)
+            })
+        }
+
+        while (i < data.indexes.length) {
+        }
+        zip.generateAsync({
+          type: 'blob', comment: `Downloaded from Bloom  [https://app.ixil.cc/a/${data.en.id}]`, compression: 'DEFLATE',
+          compressionOptions: {
+            level: 1  // compression level - store
+          }
+        })
+          .then(function(content) {
+            saveAs(content, `petals-${data.en.id}.zip`)
+          }).finally(function() {
+          vuexContext.commit('SET_DOWNLOAD_STATE', false)
+        })
+      }
     }
   },
 

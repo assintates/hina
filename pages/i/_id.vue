@@ -15,40 +15,13 @@
                    style="border-radius: 5px; box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18);"
                    :src="`https://proxy.ixil.cc/prox?image=`+info.thumb" />
             <v-col style="margin-left: 4rem;">
-              <h1 class="unselectable" v-if="$vuetify.breakpoint.mdAndUp"
-                  style="width: 40rem;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 0 0 3px #000000;">
-                {{ info.name }}</h1>
-              <h2 class="unselectable" v-if="$vuetify.breakpoint.smAndDown"
-                  style="width: 20rem;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 0 0 3px #000000;">
-                {{ info.name }}</h2>
               <v-row justify="start" class="pl-3">
-                <v-icon>mdi-account-circle</v-icon>
+                <v-icon color="primary">mdi-account-circle</v-icon>
                 <h4
                   style="padding-left: 0.5rem; width: 10rem;  overflow: hidden; text-overflow: ellipsis; text-shadow: 0 0 3px #000000;">
-                  {{ info.idol }}</h4>
+                  {{ info.iid }}</h4>
               </v-row>
               <div>
-                <v-badge
-                  color="green"
-                  content="168+"
-                  icon="mdi-thumb-up"
-                  overlap
-                  offset-y="29px"
-                  offset-x="23px"
-                >
-                  <v-col>
-                    <v-avatar class="paper"
-                              :size=" $vuetify.breakpoint.smAndDown? `2.0rem`: `2.7rem`"
-                              v-for="(item, i) in 5"
-                              :key="i"
-                              :style=" i > 0  ? 'margin-left: -9px; transform: rotateY(11deg)' : 'margin-left: 0;' "
-                              style="box-shadow: -2px 1px 4px -3px #000000, -5px 2px 6px -2px rgba(0,0,0,0.74);">
-                      <v-img size="2.2rem"
-                             src="https://cdn.discordapp.com/attachments/488810702190936075/761234831304556554/unknown.png" />
-                    </v-avatar>
-                  </v-col>
-                </v-badge>
-
                 <v-rating
                   empty-icon="mdi-star-outline"
                   full-icon="mdi-star"
@@ -212,14 +185,11 @@
                style="border-radius: 5px; box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18);"
                :src="`https://proxy.ixil.cc/prox?image=`+info.thumb" />
         <div style="padding-top: 1rem;">
-          <h2
-            style="width: 18rem;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 0 0 3px #000000;">
-            {{ info.name }}</h2>
           <v-row justify="start" class="pl-3">
-            <v-icon>mdi-account-circle</v-icon>
+            <v-icon color="primary">mdi-account-circle</v-icon>
             <h4
               style="padding-left: 0.5rem; width: 16rem;  overflow: hidden; text-overflow: ellipsis; text-shadow: 0 0 3px #000000;">
-              {{ info.idol }}</h4>
+              {{ info.iid }}</h4>
           </v-row>
         </div>
 
@@ -320,7 +290,7 @@
                 <v-select
                   v-if="!DownloadState"
                   v-model="selvalues"
-                  :items="elvalues"
+                  :items="info.gliphs"
                   label="Select Images"
                   multiple
                 >
@@ -447,91 +417,117 @@
       <div class="scrollbox-fm" />
       <div class="disable-scrollbars"
            style="margin-top: 14rem; padding-top: 1rem; overflow: scroll; height: inherit; ">
-        <v-container style="padding-bottom: 19rem; width: 100vw; padding-right: 2rem;">
+        <v-container style="padding-bottom: 49rem; width: 100vw; padding-right: 1rem;">
           <masonry
             :cols="{default: 4, 1000: 3, 700: 2, 400: 2}"
             :gutter="{default: '30px', 700: '15px'}"
           >
-            <v-img v-if="$vuetify.breakpoint.mdAndUp && !dist" v-for="(item, index) in items" :key="index"
-                   @click="show(index)" width="17rem" max-height="20rem;"
-                   style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
-                   lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                   :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data"
-                   @error="dist = true">
-              <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center"
+            <v-lazy v-if="$vuetify.breakpoint.smAndUp && !dist" v-for="(item, index) in info.gliphs"
+                    style="margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
+                    :key="index">
+              <v-card class="mx-auto"
+                      width="17rem" max-height="20rem;"
+              >
+                <v-img
+                  @click="show(index)"
+                  lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
+                  :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data[0].url"
+                  @error="dist = true"
+                  max-width="17rem" max-height="20rem;"
                 >
-                  <v-progress-circular
-                    indeterminate
-                    color="red"
-                  ></v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular
+                        indeterminate
+                        color="red"
+                      ></v-progress-circular>
+                    </v-row>
+                  </template>
+                  <v-card-title style="width: 100%; height: 40%; margin-top: 100%" class="title white--text">
+                    <v-row
+                      style="padding-left: 1rem;"
+                      class="flex-row"
+                    >
+                      <v-col justify="space-between">
+                        <v-row>
+                          <div>
+                            <v-icon size="1.7rem" style="text-shadow: 2px 1px 0 black;">mdi-history</v-icon>
+                          </div>
+                          <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
+                            <p>
+                              {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(item.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(item.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(item.time))}`
+                              }}</p>
+                          </div>
+                        </v-row>
+                        <v-row>
+                          <div>
+                            <v-icon style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
+                          </div>
+                          <div style="padding-top: 2px; text-shadow: 2px 1px 0 black;">
+                            <p>{{ `${item.data.length}` }}</p>
+                          </div>
+                        </v-row>
+                      </v-col>
+                    </v-row>
+                  </v-card-title>
+                </v-img>
+              </v-card>
+            </v-lazy>
 
 
-            <v-img v-if="$vuetify.breakpoint.smAndDown && !dist" v-for="(item, index) in items" :key="index"
-                   @click="show(index)" width="10rem" max-height="20rem;"
-                   style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
-                   lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                   :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data"
-                   @error="dist = true">
-              <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center"
-                >
-                  <v-progress-circular
-                    indeterminate
-                    color="red"
-                  ></v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
-
-
-            <v-img v-if="$vuetify.breakpoint.mdAndUp && dist" v-for="(item, index) in items" :key="index"
-                   @click="show(index)" width="17rem" max-height="20rem;"
-                   style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
-                   lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                   :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data">
-              <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center"
-                >
-                  <v-progress-circular
-                    indeterminate
-                    color="red"
-                  ></v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
-
-
-            <v-img v-if="$vuetify.breakpoint.smAndDown && dist" v-for="(item, index) in items" :key="index"
-                   @click="show(index)" width="10rem" max-height="20rem;"
-                   style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
-                   lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                   :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data">
-              <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center"
-                >
-                  <v-progress-circular
-                    indeterminate
-                    color="red"
-                  ></v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
+            <v-card v-if="$vuetify.breakpoint.xs && !dist" v-for="(item, index) in info.gliphs"
+                    style="margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
+                    :key="index"
+                    class="mx-auto"
+                    width="17rem" max-height="15rem;"
+            >
+              <v-img
+                @click="show(index)"
+                lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
+                :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data[0].url"
+                @error="dist = true"
+                max-width="17rem" max-height="15rem;"
+              >
+                <template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular
+                      indeterminate
+                      color="red"
+                    ></v-progress-circular>
+                  </v-row>
+                </template>
+                <v-card-title style="width: 100%; height: 50%; margin-top: 73%" class="title white--text">
+                  <v-col>
+                    <v-row>
+                      <div>
+                        <v-icon size="1.4rem" style="text-shadow: 2px 1px 0 black;">mdi-history</v-icon>
+                      </div>
+                      <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
+                        <p>
+                          {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(item.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(item.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(item.time))}`
+                          }}</p>
+                      </div>
+                    </v-row>
+                    <v-row>
+                      <div>
+                        <v-icon size="1rem" style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
+                      </div>
+                      <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 0.7rem">
+                        <p>{{ `${item.data.length}` }}</p>
+                      </div>
+                    </v-row>
+                  </v-col>
+                </v-card-title>
+              </v-img>
+            </v-card>
           </masonry>
         </v-container>
       </div>
@@ -556,14 +552,11 @@
                    :src="`https://proxy.ixil.cc/prox?image=`+info.thumb" />
             <div>
               <v-col>
-                <h2
-                  style="width: 18rem;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 0 0 3px #000000;">
-                  {{ info.name }}</h2>
                 <v-row justify="start" class="pl-3">
-                  <v-icon>mdi-account-circle</v-icon>
+                  <v-icon color="primary">mdi-account-circle</v-icon>
                   <h4
                     style="padding-left: 0.5rem; width: 16rem;  overflow: hidden; text-overflow: ellipsis; text-shadow: 0 0 3px #000000;">
-                    {{ info.idol }}</h4>
+                    {{ info.iid }}</h4>
                 </v-row>
                 <div
                   style="transform:  rotateZ(90deg) translateY(-36rem); padding-top: 25rem; width: fit-content; height: fit-content">
@@ -768,66 +761,60 @@
               </v-img>
 
 
-              <v-img v-if="$vuetify.breakpoint.smAndDown && !dist" v-for="(item, index) in items" :key="index"
-                     @click="show(index)" width="10rem" max-height="16rem;"
-                     style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
-                     lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                     :src="`https://proxy.ixil.cc/ren?method=cover&width=300&height=200&image=`+item.data"
-                     @error="dist = true">
-                <template v-slot:placeholder>
-                  <v-row
-                    class="fill-height ma-0"
-                    align="center"
-                    justify="center"
-                  >
-                    <v-progress-circular
-                      indeterminate
-                      color="red"
-                    ></v-progress-circular>
-                  </v-row>
-                </template>
-              </v-img>
+              <v-card v-if="$vuetify.breakpoint.mdAndUp && !dist" v-for="(item, index) in info.gliphs"
+                      :key="index"
+                      class="mx-auto"
+                      width="17rem" max-height="20rem;"
+                      style="margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
+              >
+                <v-img
+                  @click="show(index)"
+                  lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
+                  :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data[0].url"
+                  @error="dist = true">
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular
+                        indeterminate
+                        color="red"
+                      ></v-progress-circular>
+                    </v-row>
+                  </template>
 
-
-              <v-img v-if="$vuetify.breakpoint.mdAndUp && !dist" v-for="(item, index) in items" :key="index"
-                     @click="show(index)"
-                     width="30rem" max-height="18rem;"
-                     style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
-                     lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                     :src="`https://proxy.ixil.cc/ren?method=cover&width=500&height=400&image=`+item.data">
-                <template v-slot:placeholder>
-                  <v-row
-                    class="fill-height ma-0"
-                    align="center"
-                    justify="center"
-                  >
-                    <v-progress-circular
-                      indeterminate
-                      color="red"
-                    ></v-progress-circular>
-                  </v-row>
-                </template>
-              </v-img>
-
-
-              <v-img v-if="$vuetify.breakpoint.smAndDown && !dist" v-for="(item, index) in items" :key="index"
-                     @click="show(index)" width="10rem" max-height="16rem;"
-                     style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
-                     lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                     :src="`https://proxy.ixil.cc/ren?method=cover&width=300&height=200&image=`+item.data">
-                <template v-slot:placeholder>
-                  <v-row
-                    class="fill-height ma-0"
-                    align="center"
-                    justify="center"
-                  >
-                    <v-progress-circular
-                      indeterminate
-                      color="red"
-                    ></v-progress-circular>
-                  </v-row>
-                </template>
-              </v-img>
+                  <v-card-title style="width: 100%; height: 40%; margin-top: 100%" class="title white--text">
+                    <v-row
+                      style="padding-left: 1rem;"
+                      class="flex-row"
+                      justify=""
+                    >
+                      <v-col justify="space-between">
+                        <v-row>
+                          <div>
+                            <v-icon size="1.7rem" style="text-shadow: 2px 1px 0 black;">mdi-history</v-icon>
+                          </div>
+                          <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
+                            <p>
+                              {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(item.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(item.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(item.time))}`
+                              }}</p>
+                          </div>
+                        </v-row>
+                        <v-row>
+                          <div>
+                            <v-icon style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
+                          </div>
+                          <div style="padding-top: 2px; text-shadow: 2px 1px 0 black;">
+                            <p>{{ `${item.data.length}` }}</p>
+                          </div>
+                        </v-row>
+                      </v-col>
+                    </v-row>
+                  </v-card-title>
+                </v-img>
+              </v-card>
             </masonry>
           </v-col>
         </div>
@@ -888,7 +875,7 @@ export default {
   },
 
   asyncData({ params }) {
-    return axios.get(`https://api.ixil.cc/bloom/hina/payload?id=${params.id}`)
+    return axios.get(`https://api.ixil.cc/bloom/misha/payload?id=${params.id}`)
       .then((res) => {
         return { info: res.data }
       })
@@ -897,25 +884,25 @@ export default {
   head() {
     if (this.info !== undefined) {
       return {
-        title: 'Bloom | Hina - ' + this.info.name,
+        title: 'Bloom | Misha - ' + this.info.iid,
         meta: [
           { charset: 'utf-8' },
           { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-          { hid: 'description', name: 'description', content: this.info.edata },
-          { name: 'og:url', content: `https://app.ixil.cc/a/${this.info.id}` },
-          { name: 'og:description', content: this.info.edata },
-          { name: 'og:title', content: 'Bloom | Hina - ' + this.info.name },
+          { hid: 'description', name: 'description', content: 'Instagram Profile: ' + this.info.iid },
+          { name: 'og:url', content: `https://app.ixil.cc/i/${this.info.id}` },
+          { name: 'og:description', content: 'Instagram Profile: ' + this.info.iid },
+          { name: 'og:title', content: 'Bloom | Misha - ' + this.info.iid },
           { name: 'og:image', content: `https://proxy.ixil.cc/prox?image=` + this.info.thumb },
-          { name: 'og:site_name', content: 'Bloom | Hina - ' + this.info.name },
+          { name: 'og:site_name', content: 'Bloom | Misha - ' + this.info.iid },
           { name: 'og:type', content: 'website' },
           { name: 'twitter:card', content: 'summary_large_image' },
-          { name: 'twitter:url', content: `https://app.ixil.cc/a/${this.info.id}` },
+          { name: 'twitter:url', content: `https://app.ixil.cc/i/${this.info.id}` },
           { name: 'twitter:image', content: `https://proxy.ixil.cc/prox?image=` + this.info.thumb },
-          { name: 'twitter:title', content: 'Bloom | Hina - ' + this.info.name },
-          { name: 'twitter:description', content: this.info.edata },
+          { name: 'twitter:title', content: 'Bloom | Misha - ' + this.info.iid },
+          { name: 'twitter:description', content: 'Instagram Profile: ' + this.info.iid },
           {
             name: 'keywords',
-            content: `Bloom | Hina  Free Open Source Idol/Porno Gallery ${this.info.name} ${this.info.edata}`
+            content: `Bloom | Misha  Free Instagram/twitter idol at 4X ${this.info.iid}`
           }
         ]
       }
@@ -958,16 +945,15 @@ export default {
   },
 
   beforeMount() {
-    this.BgImage = this.info.gliphs[1]
+    this.info.gliphs = this.info.gliphs.reverse()
+    this.BgImage = this.info.gliphs[0].data[0].url
   },
   mounted() {
-    this.$store.dispatch('history/ADD_HISTORY', { id: this.info.id, source: 'hina' })
-    this.items = Array.from({ length: this.info.gliphs.length }, (_, index) => ({
-      data: this.info.gliphs[index],
-      id: index
-    }))
-    this.elvalues = Array.from({ length: this.info.gliphs.length }, (_, index) => (index + 1))
-    this.selvalues = this.elvalues
+    this.$store.dispatch('history/ADD_HISTORY', { id: this.info.id, source: 'misha' })
+
+    this.info.gliphs.forEach(item => {
+      this.elvalues.push(`${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(item.time))}/${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(item.time))}/${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(item.time))}  : P: ${item.data.length}`)
+    })
 
     for (let i = 0; i < STANDARD_ASPECT_RATIOS.length; i++) {
       LOOKUP[STANDARD_ASPECT_RATIOS[i][0]] = STANDARD_ASPECT_RATIOS[i][1]
@@ -976,7 +962,7 @@ export default {
     this.el = this.$el.getElementsByClassName('overlay')[0]
 
     //preload next BG
-    this.NBGImage = this.info.gliphs[Math.floor((Math.random() * this.info.gliphs.length) + 1)]
+    this.NBGImage = this.info.gliphs[Math.floor((Math.random() * this.info.gliphs.length) + 1)].data[0].url
   },
 
   methods: {
@@ -984,14 +970,14 @@ export default {
       //Set Preloaded Image
       this.BgImage = this.NBGImage
       //Preload Image
-      this.NBGImage = this.info.gliphs[Math.floor((Math.random() * this.info.gliphs.length) + 1)]
+      this.NBGImage = this.info.gliphs[Math.floor((Math.random() * this.info.gliphs.length) + 1)].data[0].url
     },
 
     AddFav() {
       if (this.marks > 0) this.$store.dispatch('history/ADD_FAV', {
         id: this.info.id,
         marks: this.marks,
-        source: 'hina'
+        source: 'misha'
       })
     },
 
@@ -1043,11 +1029,25 @@ export default {
     },
     Download() {
       if (this.DownloadMeta) {
-        this.$store.dispatch('download/DOWNLOAD_META', { en: this.info, indexes: this.selvalues, raw: false })
+        let temp = []
+        this.selvalues.forEach(value => {
+          this.info.gliphs[this.elvalues.indexOf(value)].data.forEach(item => {
+            temp.push(item.url)
+          })
+        })
+
+        this.$store.dispatch('download/DOWNLOAD_META', { en: this.info, data: temp, raw: true })
         this.DownloadDialog = false
         this.$store.dispatch('snackbar/POP_SNACKBAR', 'Downloading Meta File.')
       } else {
-        this.$store.dispatch('download/DOWNLOAD', { en: this.info, indexes: this.selvalues, raw: false })
+        let temp = []
+        this.selvalues.forEach(value => {
+          this.info.gliphs[this.elvalues.indexOf(value)].data.forEach(item => {
+            temp.push(item.url)
+          })
+        })
+
+        this.$store.dispatch('download/DOWNLOAD', { en: this.info, data: temp, raw: true })
         this.DownloadDialog = false
         this.$store.dispatch('snackbar/POP_SNACKBAR', 'Downloading Zip.')
       }
@@ -1076,9 +1076,14 @@ export default {
     },
 
     show(index) {
+      let temp = []
+      this.info.gliphs[index].data.forEach(x => {
+        console.log(x.url)
+        temp.push({ data: x.url })
+      })
       this.$refs.viewer.show(
-        this.items,
-        index
+        temp,
+        0
       )
     },
 
@@ -1328,5 +1333,11 @@ export default {
   top: 15rem;
   filter: opacity(1) blur(0.4%);
   background: linear-gradient(180deg, rgba(18, 18, 18, 1) 0%, rgba(18, 18, 18, 1) 45%, rgba(18, 18, 18, 0.9475140397956058) 71%, rgba(18, 18, 18, 0.8858893899356618) 86%, rgba(18, 18, 18, 0.7738445720084909) 93%, rgba(18, 18, 18, 0.6449930313922444) 98%, rgba(18, 18, 18, 0.1065743172) 100%);
+}
+
+
+.title {
+  background: #02aab0;
+  background: linear-gradient(to top, #00000099, #00000000);
 }
 </style>

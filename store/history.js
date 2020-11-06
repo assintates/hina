@@ -56,7 +56,7 @@ export const actions = {
           vuexContext.commit('SET_FAV_DATA', response.data.rating)
         })
 
-      axios.get(`https://api.ixil.cc/bloom/strat/user/add?id=${post.id}&history=true&email=${this.$auth.user.email.trim()}`, {
+      axios.get(`https://api.ixil.cc/bloom/strat/user/add?id=${post.id}&history=true&platform=${post.source}&email=${this.$auth.user.email.trim()}`, {
         headers: {
           Authorization: this.$auth.getToken('auth0') //the token is a variable which holds the token
         }
@@ -75,7 +75,7 @@ export const actions = {
 
   ADD_FAV(vuexContext, post) {
     if (this.$auth.loggedIn) {
-      axios.get(`https://api.ixil.cc/bloom/strat/user/add?id=${post.id}&marks=${post.marks}&picture=${this.$auth.user.picture}&email=${this.$auth.user.email.trim()}`, {
+      axios.get(`https://api.ixil.cc/bloom/strat/user/add?id=${post.id}&marks=${post.marks}&platform=${post.source}&picture=${this.$auth.user.picture}&email=${this.$auth.user.email.trim()}`, {
         headers: {
           Authorization: this.$auth.getToken('auth0') //the token is a variable which holds the token
         }

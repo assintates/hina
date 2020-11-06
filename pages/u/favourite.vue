@@ -9,7 +9,9 @@
             :gutter="{default: '30px', 700: '15px'}"
           >
             <n-link v-for="(item, index) in datan.data" :key="index"
-                    :to="`/a/${item.id}`" prefetch>
+                    :to="item.source === 'HINA'? `/a/${item.id}` : `/i/${item.id}`"
+                    style="text-decoration: none;"
+                    prefetch>
               <v-img max-width="17rem" max-height="20rem;"
                      style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
                      lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
@@ -26,6 +28,11 @@
                     ></v-progress-circular>
                   </v-row>
                 </template>
+                <v-row style="padding-left: 0.7rem">
+                  <v-icon style="text-shadow: 2px 1px 0 black; text-decoration: none;">
+                    {{ item.source === 'HINA' ? 'mdi-alpha-h-box-outline' : 'mdi-alpha-m-box-outline' }}
+                  </v-icon>
+                </v-row>
               </v-img>
             </n-link>
           </masonry>
