@@ -20,6 +20,7 @@
     "core-js": "^3.6.5",
     "file-saver": "^2.0.2",
     "jszip": "^3.5.0",
+    "lodash": "^4.17.20",
     "nuxt": "^2.14.5",
     "v-img-fallback": "^0.1.5",
     "v-viewer": "^1.5.1",

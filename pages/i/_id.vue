@@ -418,79 +418,21 @@
       <div class="disable-scrollbars"
            style="margin-top: 14rem; padding-top: 1rem; overflow: scroll; height: inherit; ">
         <v-container style="padding-bottom: 49rem; width: 100vw; padding-right: 1rem;">
-          <masonry
-            :cols="{default: 4, 1000: 3, 700: 2, 400: 2}"
-            :gutter="{default: '30px', 700: '15px'}"
+          <RecycleScroller
+            :items="chunked_images"
+            :item-size="3"
+            :prerender="5"
+            v-slot="{ index, item }"
           >
-            <v-lazy v-if="$vuetify.breakpoint.smAndUp && !dist" v-for="(item, index) in info.gliphs"
-                    style="margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
-                    :key="index">
-              <v-card class="mx-auto"
-                      width="17rem" max-height="20rem;"
-              >
-                <v-img
-                  @click="show(index)"
-                  lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                  :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data[0].url"
-                  @error="dist = true"
-                  max-width="17rem" max-height="20rem;"
-                >
-                  <template v-slot:placeholder>
-                    <v-row
-                      class="fill-height ma-0"
-                      align="center"
-                      justify="center"
-                    >
-                      <v-progress-circular
-                        indeterminate
-                        color="red"
-                      ></v-progress-circular>
-                    </v-row>
-                  </template>
-                  <v-card-title style="width: 100%; height: 40%; margin-top: 100%" class="title white--text">
-                    <v-row
-                      style="padding-left: 1rem;"
-                      class="flex-row"
-                    >
-                      <v-col justify="space-between">
-                        <v-row>
-                          <div>
-                            <v-icon size="1.7rem" style="text-shadow: 2px 1px 0 black;">mdi-history</v-icon>
-                          </div>
-                          <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
-                            <p>
-                              {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(item.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(item.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(item.time))}`
-                              }}</p>
-                          </div>
-                        </v-row>
-                        <v-row>
-                          <div>
-                            <v-icon style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
-                          </div>
-                          <div style="padding-top: 2px; text-shadow: 2px 1px 0 black;">
-                            <p>{{ `${item.data.length}` }}</p>
-                          </div>
-                        </v-row>
-                      </v-col>
-                    </v-row>
-                  </v-card-title>
-                </v-img>
-              </v-card>
-            </v-lazy>
-
-
-            <v-card v-if="$vuetify.breakpoint.xs && !dist" v-for="(item, index) in info.gliphs"
-                    style="margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
-                    :key="index"
-                    class="mx-auto"
-                    width="17rem" max-height="15rem;"
-            >
-              <v-img
-                @click="show(index)"
-                lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data[0].url"
-                @error="dist = true"
-                max-width="17rem" max-height="15rem;"
+            <v-row justify="space-between" style="padding-bottom: 2rem;">
+              <v-img v-if="$vuetify.breakpoint.xl && !dist"
+                     v-for="(itemd, indexd) in item.data"
+                     :key="indexd"
+                     @click="show(index,indexd)"
+                     lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
+                     :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+itemd.data[0].url"
+                     @error="dist = true"
+                     max-width="23rem" max-height="30rem;"
               >
                 <template v-slot:placeholder>
                   <v-row
@@ -504,31 +446,140 @@
                     ></v-progress-circular>
                   </v-row>
                 </template>
-                <v-card-title style="width: 100%; height: 50%; margin-top: 73%" class="title white--text">
-                  <v-col>
-                    <v-row>
-                      <div>
-                        <v-icon size="1.4rem" style="text-shadow: 2px 1px 0 black;">mdi-history</v-icon>
-                      </div>
-                      <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
-                        <p>
-                          {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(item.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(item.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(item.time))}`
-                          }}</p>
-                      </div>
-                    </v-row>
-                    <v-row>
-                      <div>
-                        <v-icon size="1rem" style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
-                      </div>
-                      <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 0.7rem">
-                        <p>{{ `${item.data.length}` }}</p>
-                      </div>
-                    </v-row>
-                  </v-col>
+                <v-card-title style="width: 100%; height: 40%; margin-top: 100%" class="title white--text">
+                  <v-row
+                    style="padding-left: 1rem;"
+                    class="flex-row"
+                  >
+                    <v-col justify="space-between">
+                      <v-row>
+                        <div>
+                          <v-icon size="1.7rem" style="text-shadow: 2px 1px 0 black;">mdi-history</v-icon>
+                        </div>
+                        <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
+                          <p>
+                            {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(itemd.time))}`
+                            }}</p>
+                        </div>
+                      </v-row>
+                      <v-row>
+                        <div>
+                          <v-icon style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
+                        </div>
+                        <div style="padding-top: 2px; text-shadow: 2px 1px 0 black;">
+                          <p>{{ `${itemd.data.length}` }}</p>
+                        </div>
+                      </v-row>
+                    </v-col>
+                  </v-row>
                 </v-card-title>
               </v-img>
-            </v-card>
-          </masonry>
+
+
+              <v-img v-if="$vuetify.breakpoint.mdAndUp && !$vuetify.breakpoint.xl && !dist"
+                     v-for="(itemd, indexd) in item.data"
+                     :key="indexd"
+                     @click="show(index,indexd)"
+                     lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
+                     :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+itemd.data[0].url"
+                     @error="dist = true"
+                     max-width="17rem" max-height="20rem;"
+              >
+                <template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular
+                      indeterminate
+                      color="red"
+                    ></v-progress-circular>
+                  </v-row>
+                </template>
+                <v-card-title style="width: 100%; height: 40%; margin-top: 100%" class="title white--text">
+                  <v-row
+                    style="padding-left: 1rem;"
+                    class="flex-row"
+                  >
+                    <v-col justify="space-between">
+                      <v-row>
+                        <div>
+                          <v-icon size="1.7rem" style="text-shadow: 2px 1px 0 black;">mdi-history</v-icon>
+                        </div>
+                        <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
+                          <p>
+                            {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(itemd.time))}`
+                            }}</p>
+                        </div>
+                      </v-row>
+                      <v-row>
+                        <div>
+                          <v-icon style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
+                        </div>
+                        <div style="padding-top: 2px; text-shadow: 2px 1px 0 black;">
+                          <p>{{ `${itemd.data.length}` }}</p>
+                        </div>
+                      </v-row>
+                    </v-col>
+                  </v-row>
+                </v-card-title>
+              </v-img>
+
+
+              <v-card v-if="$vuetify.breakpoint.smAndDown && !dist" v-for="(itemd, indexd) in item.data"
+                      style="margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
+                      :key="indexd"
+                      @click="show(index,indexd)"
+                      class="mx-auto"
+                      max-width="27rem" max-height="25rem;"
+              >
+                <v-img
+                  lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
+                  :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+itemd.data[0].url"
+                  @error="dist = true"
+                  max-width="17rem" max-height="15rem;"
+                >
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular
+                        indeterminate
+                        color="red"
+                      ></v-progress-circular>
+                    </v-row>
+                  </template>
+                  <v-card-title style="width: 100%; height: 50%; margin-top: 78%" class="title white--text">
+                    <v-col>
+                      <v-row>
+                        <div>
+                          <v-icon size="1.4rem" style="text-shadow: 2px 1px 0 black;">mdi-history</v-icon>
+                        </div>
+                        <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
+                          <p>
+                            {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(itemd.time))}`
+                            }}</p>
+                        </div>
+                      </v-row>
+                      <v-row>
+                        <div>
+                          <v-icon size="1rem" style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
+                        </div>
+                        <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 0.7rem">
+                          <p>{{ `${itemd.data.length}` }}</p>
+                        </div>
+                      </v-row>
+                    </v-col>
+                  </v-card-title>
+                </v-img>
+              </v-card>
+
+
+            </v-row>
+          </RecycleScroller>
         </v-container>
       </div>
     </div>
@@ -735,43 +786,22 @@
       <div class="overlay-daig fade-diag" style="">
         <div style="padding-left: 12rem; padding-right: 2rem; padding-top: 5rem; height: fit-content;">
           <v-col style="height: fit-content;">
-            <masonry
-              :cols="{default: 2}"
-              :gutter="{default: '30px', 700: '15px'}"
+            <RecycleScroller
+              :items="chunked_images"
+              :item-size="3"
+              :prerender="5"
+              v-slot="{ index, item }"
             >
-              <v-img v-if="$vuetify.breakpoint.mdAndUp && !dist" v-for="(item, index) in items" :key="index"
-                     @click="show(index)"
-                     width="30rem" max-height="18rem;"
-                     style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
-                     lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                     :src="`https://proxy.ixil.cc/ren?method=cover&width=500&height=400&image=`+item.data"
-                     @error="dist = true">
-                <template v-slot:placeholder>
-                  <v-row
-                    class="fill-height ma-0"
-                    align="center"
-                    justify="center"
-                  >
-                    <v-progress-circular
-                      indeterminate
-                      color="red"
-                    ></v-progress-circular>
-                  </v-row>
-                </template>
-              </v-img>
-
-
-              <v-card v-if="$vuetify.breakpoint.mdAndUp && !dist" v-for="(item, index) in info.gliphs"
-                      :key="index"
-                      class="mx-auto"
-                      width="17rem" max-height="20rem;"
-                      style="margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
-              >
-                <v-img
-                  @click="show(index)"
-                  lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                  :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data[0].url"
-                  @error="dist = true">
+              <v-row justify="space-between" style="padding-bottom: 2rem;">
+                <v-img v-if="$vuetify.breakpoint.xl && !dist"
+                       v-for="(itemd, indexd) in item.data"
+                       :key="indexd"
+                       @click="show(index,indexd)"
+                       lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
+                       :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+itemd.data[0].url"
+                       @error="dist = true"
+                       max-width="23rem" max-height="30rem;"
+                >
                   <template v-slot:placeholder>
                     <v-row
                       class="fill-height ma-0"
@@ -784,12 +814,10 @@
                       ></v-progress-circular>
                     </v-row>
                   </template>
-
                   <v-card-title style="width: 100%; height: 40%; margin-top: 100%" class="title white--text">
                     <v-row
                       style="padding-left: 1rem;"
                       class="flex-row"
-                      justify=""
                     >
                       <v-col justify="space-between">
                         <v-row>
@@ -798,7 +826,7 @@
                           </div>
                           <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
                             <p>
-                              {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(item.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(item.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(item.time))}`
+                              {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(itemd.time))}`
                               }}</p>
                           </div>
                         </v-row>
@@ -807,15 +835,117 @@
                             <v-icon style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
                           </div>
                           <div style="padding-top: 2px; text-shadow: 2px 1px 0 black;">
-                            <p>{{ `${item.data.length}` }}</p>
+                            <p>{{ `${itemd.data.length}` }}</p>
                           </div>
                         </v-row>
                       </v-col>
                     </v-row>
                   </v-card-title>
                 </v-img>
-              </v-card>
-            </masonry>
+
+
+                <v-img v-if="$vuetify.breakpoint.mdAndUp && !$vuetify.breakpoint.xl && !dist"
+                       v-for="(itemd, indexd) in item.data"
+                       :key="indexd"
+                       @click="show(index,indexd)"
+                       lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
+                       :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+itemd.data[0].url"
+                       @error="dist = true"
+                       max-width="15rem" max-height="19rem;"
+                >
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular
+                        indeterminate
+                        color="red"
+                      ></v-progress-circular>
+                    </v-row>
+                  </template>
+                  <v-card-title style="width: 100%; height: 40%; margin-top: 100%" class="title white--text">
+                    <v-row
+                      style="padding-left: 1rem;"
+                      class="flex-row"
+                    >
+                      <v-col justify="space-between">
+                        <v-row>
+                          <div>
+                            <v-icon size="1.7rem" style="text-shadow: 2px 1px 0 black;">mdi-history</v-icon>
+                          </div>
+                          <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
+                            <p>
+                              {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(itemd.time))}`
+                              }}</p>
+                          </div>
+                        </v-row>
+                        <v-row>
+                          <div>
+                            <v-icon style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
+                          </div>
+                          <div style="padding-top: 2px; text-shadow: 2px 1px 0 black;">
+                            <p>{{ `${itemd.data.length}` }}</p>
+                          </div>
+                        </v-row>
+                      </v-col>
+                    </v-row>
+                  </v-card-title>
+                </v-img>
+
+
+                <v-card v-if="$vuetify.breakpoint.smAndDown && !dist" v-for="(itemd, indexd) in item.data"
+                        style="margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
+                        :key="indexd"
+                        @click="show(index,indexd)"
+                        class="mx-auto"
+                        max-width="27rem" max-height="25rem;"
+                >
+                  <v-img
+                    lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
+                    :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+itemd.data[0].url"
+                    @error="dist = true"
+                    max-width="17rem" max-height="15rem;"
+                  >
+                    <template v-slot:placeholder>
+                      <v-row
+                        class="fill-height ma-0"
+                        align="center"
+                        justify="center"
+                      >
+                        <v-progress-circular
+                          indeterminate
+                          color="red"
+                        ></v-progress-circular>
+                      </v-row>
+                    </template>
+                    <v-card-title style="width: 100%; height: 50%; margin-top: 78%" class="title white--text">
+                      <v-col>
+                        <v-row>
+                          <div>
+                            <v-icon size="1.4rem" style="text-shadow: 2px 1px 0 black;">mdi-history</v-icon>
+                          </div>
+                          <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
+                            <p>
+                              {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(itemd.time))}`
+                              }}</p>
+                          </div>
+                        </v-row>
+                        <v-row>
+                          <div>
+                            <v-icon size="1rem" style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
+                          </div>
+                          <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 0.7rem">
+                            <p>{{ `${itemd.data.length}` }}</p>
+                          </div>
+                        </v-row>
+                      </v-col>
+                    </v-card-title>
+                  </v-img>
+                </v-card>
+              </v-row>
+            </RecycleScroller>
           </v-col>
         </div>
       </div>
@@ -835,6 +965,7 @@
 import axios from 'axios'
 import ImgViewer from '../../components/images/ImgViewer'
 import { mapGetters, mapMutations, mapState } from 'vuex'
+import { chunk } from 'lodash/array'
 
 let ERROR_ALLOWED = 0.05
 let STANDARD_ASPECT_RATIOS = [
@@ -861,6 +992,7 @@ export default {
       BgImage: '',
       NBGImage: '',
       items: [],
+      egs: [],
       PollenNotify: true,
       DownloadDialog: false,
       DSnackbar: false,
@@ -877,7 +1009,15 @@ export default {
   asyncData({ params }) {
     return axios.get(`https://api.ixil.cc/bloom/misha/payload?id=${params.id}`)
       .then((res) => {
-        return { info: res.data }
+        let eld = []
+        let els = chunk(res.data.gliphs.reverse(), 3)
+        let i = 0
+        els.forEach(x => {
+          i++
+
+          eld.push({ id: i, data: x })
+        })
+        return { info: res.data, chunked_images: eld }
       })
   },
 
@@ -947,6 +1087,7 @@ export default {
   beforeMount() {
     this.info.gliphs = this.info.gliphs.reverse()
     this.BgImage = this.info.gliphs[0].data[0].url
+    console.log(this.chunked_images)
   },
   mounted() {
     this.$store.dispatch('history/ADD_HISTORY', { id: this.info.id, source: 'misha' })
@@ -1075,9 +1216,10 @@ export default {
       }
     },
 
-    show(index) {
+    show(index1, index2) {
+
       let temp = []
-      this.info.gliphs[index].data.forEach(x => {
+      this.chunked_images[index1].data[index2].data.forEach(x => {
         console.log(x.url)
         temp.push({ data: x.url })
       })
