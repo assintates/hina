@@ -90,7 +90,7 @@ export default {
   methods: {
 
     HeadSearchUp() {
-      return axios.get(`https://api.ixil.cc/bloom/strat/user/get/favs?page=${this.Page}&op=30&email=${this.$auth.user.email}`, {
+      return axios.get(`https://app.ixil.cc/api/bloom/strat/user/get/favs?page=${this.Page}&op=30&email=${this.$auth.user.email}`, {
         headers: {
           Authorization: this.$auth.getToken('auth0') //the token is a variable which holds the token
         }

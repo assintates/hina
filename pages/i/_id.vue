@@ -1007,7 +1007,7 @@ export default {
   },
 
   asyncData({ params }) {
-    return axios.get(`https://api.ixil.cc/bloom/misha/payload?id=${params.id}`)
+    return axios.get(`https://app.ixil.cc/api/bloom/misha/payload?id=${params.id}`)
       .then((res) => {
         let eld = []
         let els = chunk(res.data.gliphs.reverse(), 3)

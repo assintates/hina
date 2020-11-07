@@ -57,11 +57,11 @@ export default {
   },
 
   asyncData({ params }) {
-    return axios.get(`http://localhost:3001/bloom/misha/random?id=flQZX0Nt`)
+    return axios.get(`https://app.ixil.cc/api/bloom/misha/random?id=flQZX0Nt`)
       .then((res) => {
-        return axios.get(`http://localhost:3001/bloom/misha/random?id=ougvfmWY`)
+        return axios.get(`https://app.ixil.cc/api/bloom/misha/random?id=ougvfmWY`)
           .then((resd) => {
-            return axios.get(`http://localhost:3001/bloom/misha/random?many=true`)
+            return axios.get(`https://app.ixil.cc/api/bloom/misha/random?many=true`)
               .then((rese) => {
                 return { itemsd: res.data, itemsp: resd.data, itemsa: rese.data }
               })
@@ -69,11 +69,11 @@ export default {
       })
   },
   mounted() {
-    axios.get(`http://localhost:3001/bloom/misha/random?many=true`)
+    axios.get(`https://app.ixil.cc/api/bloom/misha/random?many=true`)
       .then((res) => {
         this.itemsu = res.data
       })
-    axios.get(`http://localhost:3001/bloom/misha/random?many=true`)
+    axios.get(`https://app.ixil.cc/api/bloom/misha/random?many=true`)
       .then((res) => {
         this.itemse = res.data
       })
