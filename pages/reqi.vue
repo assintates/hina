@@ -32,6 +32,9 @@ export default {
       if (strap !== undefined && strap !== null) {
         this.loading = true
         let regexp = /^.*?\.com\/(.*?)\/.*$/
+        if (regexp.exec(strap).length === 0) {
+          regexp = /^.*?\.com\/(.*?)\?.*$/
+        }
         axios.get(`https://app.ixil.cc/api/bloom/misha/reqi?id=${regexp.exec(strap)[1]}`)
           .then((res) => {
 
