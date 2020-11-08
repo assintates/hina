@@ -2,7 +2,7 @@
   <div class="app" style="">
     <v-img style=""
            gradient="143deg, rgba(0,0,0,0.9307073171065301) 0%, rgba(0,0,0,0.5525560566023284) 35%, rgba(3,13,36,0.4853291658460259) 49%, rgba(0,0,0,0.33406866164434523) 64%, rgba(0,0,0,1) 100%"
-           width="100vw" height="90vh" :src="bg_img">
+           width="100vw" height="92vh" :src="bg_img">
       <vue-tinder ref="tinder" key-name="id" :queue.sync="queue" :allowSuper="true" :allowDown="false" :offset-y="10"
                   :max="4" @submit="onSubmit">
         <template slot-scope="scope">
@@ -219,7 +219,7 @@ body {
   z-index: 1;
   left: 0;
   right: 0;
-  top: 23px;
+  top: 10px;
   margin: auto;
   width: 95%;
   height: 80%;
