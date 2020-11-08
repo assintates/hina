@@ -65,7 +65,7 @@ export default {
   },
 
   googleAnalytics: {
-    id: 'G-3RLBZGMMZP'
+    id: 'UA-181726450-1'
   },
 
   auth: {
@@ -79,10 +79,6 @@ export default {
         domain: 'hina.eu.auth0.com',
         client_id: 'ogbETWao1GnRRYE7yzl5ZzD1ZMGbxD5q',
         audience: 'https://hina.eu.auth0.com/api/v2/'
-      },
-      github: {
-        client_id: '5fc566f5603780ac8ab4',
-        client_secret: '2a381784d2ee08f76ae559abf15e6ce215c3cd04'
       }
     }
   },
