@@ -269,6 +269,11 @@ export default {
           icon: 'mdi-leaf',
           title: 'MISHA',
           to: '/misha'
+        },
+        {
+          icon: 'mdi-gesture-swipe',
+          title: 'LAZY',
+          to: '/lazy'
         }
       ],
       miniVariant: false,
