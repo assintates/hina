@@ -179,7 +179,7 @@ export default {
       }
       if (this.queue.length < 15) {
         console.log('Fetching New Data')
-        axios.get(`https://app.ixil.cc/api/bloom/strat/lazy/random`)
+        axios.get(`https://app.ixil.cc/api/bloom/strat/lazy/random?dmz=` + Math.floor(Math.random() * Math.floor(Math.random() * Date.now())))
           .then((res) => {
             this.source = res.data
           }).finally(() => {
