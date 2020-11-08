@@ -8149,6 +8149,11 @@ uuid@^3.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
+uuid@^8.3.1:
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.1.tgz#2ba2e6ca000da60fce5a196954ab241131e05a31"
+  integrity sha512-FOmRr+FmWEIG8uhZv6C2bTgEVXsHk08kE7mPlrBbEe+c3r9pjceVPgupIfNIhc4yx55H69OXANrUaSuu9eInKg==
+
 v-img-fallback@^0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/v-img-fallback/-/v-img-fallback-0.1.5.tgz#07c3b78a7a7d9f744d055a1a2f94c08589e21862"
@@ -8296,6 +8301,13 @@ vue-timers@^2.0.4:
   resolved "https://registry.yarnpkg.com/vue-timers/-/vue-timers-2.0.4.tgz#7e1c443abf2109db5eeab6e62b0f5a47e94cf70b"
   integrity sha512-QOEVdO4V4o9WjFG6C0Kn9tfdTeeECjqvEQozcQlfL1Tn8v0qx4uUPhTYoc1+s6qoJnSbu8f68x8+nm1ZEir0kw==
 
+vue-tinder@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/vue-tinder/-/vue-tinder-2.0.2.tgz#13a456823ea6475eb7b626d3458c4bbfa805a4cc"
+  integrity sha512-q7xLcjUJ5koA4+VAFbvDJCaySSgxWdBdEomBAcxcXfCRDE/K5ggW0X+RuuiClwPQX5T0KE7NCQJHyBD66hOc7A==
+  dependencies:
+    vue "^2.6.10"
+
 vue-virtual-scroller@^1.0.10:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/vue-virtual-scroller/-/vue-virtual-scroller-1.0.10.tgz#fdf243240001f05bd79aa77f2e2e60403760e2fb"
@@ -8305,7 +8317,7 @@ vue-virtual-scroller@^1.0.10:
     vue-observe-visibility "^0.4.4"
     vue-resize "^0.4.5"
 
-vue@^2.6.12:
+vue@^2.6.10, vue@^2.6.12:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
