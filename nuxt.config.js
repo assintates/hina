@@ -119,7 +119,23 @@ export default {
       skipWaiting: true,
       offlineAnalytics: false,
       cleanupOutdatedCaches: true,
-      cacheAssets: true
+      cacheAssets: true,
+
+      runtimeCaching: [
+        {
+          urlPattern: 'https://app.ixil.cc/api/bloom/strat/lazy/random.*',
+          strategyOptions: {
+            cacheName: 'random-lazy'
+          },
+          strategyPlugins: [{
+            use: 'Expiration',
+            config: {
+              maxEntries: 1,
+              maxAgeSeconds: 10
+            }
+          }]
+        }
+      ]
     }
   },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
