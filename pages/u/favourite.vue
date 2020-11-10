@@ -53,6 +53,7 @@
 <script>
 import { mapGetters, mapState } from 'vuex'
 import axios from 'axios'
+import { v4 as uuid } from 'uuid'
 
 export default {
   name: 'favourite',
@@ -90,7 +91,7 @@ export default {
   methods: {
 
     HeadSearchUp() {
-      return axios.get(`https://app.ixil.cc/api/bloom/strat/user/get/favs?page=${this.Page}&op=30&email=${this.$auth.user.email}`, {
+      return axios.get(`https://app.ixil.cc/api/bloom/strat/user/get/favs?page=${this.Page}&op=30&email=${this.$auth.user.email}&dmz=${uuid()}`, {
         headers: {
           Authorization: this.$auth.getToken('auth0') //the token is a variable which holds the token
         }
