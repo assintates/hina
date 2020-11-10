@@ -37,8 +37,29 @@ export const actions = {
         }
 
       })
-        .then(response => {
-          vuexContext.commit('SET_HISTORY_DATA', response.data)
+        .then(async function(response) {
+          let albms = []
+          for (const x of response.data) {
+            await axios.get('https://proxy.ixil.cc/color?image=' + x.thumb)
+              .then(async function(rsp) {
+                albms.push({
+                  id: x.id,
+                  name: x.name,
+                  thumb: x.thumb,
+                  source: x.source,
+                  color: rsp.data
+                })
+              }).catch(async function() {
+                albms.push({
+                  id: x.id,
+                  name: x.name,
+                  thumb: x.thumb,
+                  source: x.source,
+                  color: ['#fc1c64', '#f87a75', '#760624', '#974c4c', '#bc796e', '#5c3c34']
+                })
+              })
+          }
+          vuexContext.commit('SET_HISTORY_DATA', albms)
         }).catch(function(error) {
         console.log(error)
       })
