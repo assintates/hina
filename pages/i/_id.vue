@@ -497,8 +497,7 @@
                         </div>
                         <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
                           <p>
-                            {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(itemd.time))}`
-                            }}</p>
+                            {{ item.time }}</p>
                         </div>
                       </v-row>
                       <v-row>
@@ -506,7 +505,7 @@
                           <v-icon style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
                         </div>
                         <div style="padding-top: 2px; text-shadow: 2px 1px 0 black;">
-                          <p>{{ `${itemd.data.length}` }}</p>
+                          <p>{{ itemd.count }}</p>
                         </div>
                       </v-row>
                     </v-col>
@@ -536,8 +535,7 @@
                         </div>
                         <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
                           <p>
-                            {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(itemd.time))}`
-                            }}</p>
+                            {{ item.time }}</p>
                         </div>
                       </v-row>
                       <v-row>
@@ -545,7 +543,7 @@
                           <v-icon size="1rem" style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
                         </div>
                         <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 0.7rem">
-                          <p>{{ `${itemd.data.length}` }}</p>
+                          <p>{{ itemd.count }}</p>
                         </div>
                       </v-row>
                     </v-col>
@@ -802,8 +800,7 @@
                           </div>
                           <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
                             <p>
-                              {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(itemd.time))}`
-                              }}</p>
+                              {{ item.time }}</p>
                           </div>
                         </v-row>
                         <v-row>
@@ -811,7 +808,7 @@
                             <v-icon style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
                           </div>
                           <div style="padding-top: 2px; text-shadow: 2px 1px 0 black;">
-                            <p>{{ `${itemd.data.length}` }}</p>
+                            <p>{{ itemd.count }}</p>
                           </div>
                         </v-row>
                       </v-col>
@@ -853,8 +850,7 @@
                           </div>
                           <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
                             <p>
-                              {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(itemd.time))}`
-                              }}</p>
+                              {{ item.time }}</p>
                           </div>
                         </v-row>
                         <v-row>
@@ -862,7 +858,7 @@
                             <v-icon style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
                           </div>
                           <div style="padding-top: 2px; text-shadow: 2px 1px 0 black;">
-                            <p>{{ `${itemd.data.length}` }}</p>
+                            <p>{{ itemd.count }}</p>
                           </div>
                         </v-row>
                       </v-col>
@@ -904,8 +900,7 @@
                           </div>
                           <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 1rem">
                             <p>
-                              {{ `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(itemd.time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(itemd.time))}`
-                              }}</p>
+                              {{ item.time }}</p>
                           </div>
                         </v-row>
                         <v-row>
@@ -913,7 +908,7 @@
                             <v-icon size="1rem" style="text-shadow: 2px 1px 0 black;">mdi-alpha-p-box</v-icon>
                           </div>
                           <div style="padding-top: 2px; text-shadow: 2px 1px 0 black; font-size: 0.7rem">
-                            <p>{{ `${itemd.data.length}` }}</p>
+                            <p>{{ itemd.count }}</p>
                           </div>
                         </v-row>
                       </v-col>
@@ -990,8 +985,19 @@ export default {
         let i = 0
         els.forEach(x => {
           i++
-
-          eld.push({ id: i, data: x })
+          let esl = []
+          x.forEach(v => {
+            esl.push({
+              time: v.time,
+              data: v.data,
+              count: v.data.length
+            })
+          })
+          eld.push({
+            id: i,
+            data: esl,
+            time: `${Intl.DateTimeFormat('en', { day: 'numeric' }).format(new Date(x[0].time))}-${Intl.DateTimeFormat('en', { month: 'numeric' }).format(new Date(x[0].time))}-${Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(x[0].time))}`
+          })
         })
         return { info: res.data, chunked_images: eld }
       })
