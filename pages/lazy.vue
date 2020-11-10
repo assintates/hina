@@ -143,7 +143,7 @@ export default {
     bg_img: 'https://cdn.discordapp.com/attachments/773136270867824640/774289206406807592/shlyukha.webp'
   }),
   created() {
-    axios.get(`http://localhost:3001/bloom/strat/lazy/random`)
+    axios.get(`https://app.ixil.cc/api/bloom/strat/lazy/random?dmz=` + uuid())
       .then((res) => {
         this.source = res.data
       }).finally(() => {
@@ -200,7 +200,7 @@ export default {
       } else if (type === 'like') {
         if (!this.cool_down.includes(item.iid)) {
           this.cool_down.push(item.iid)
-          axios.get(item.source === 'MISHA' ? `http://localhost:3001/bloom/strat/lazy/payload?id=${item.iid}` : `http://localhost:3001/bloom/strat/lazy/payload?id=${item.iid}&source=HINA`)
+          axios.get(item.source === 'MISHA' ? `https://app.ixil.cc/api/bloom/strat/lazy/payload?id=${item.iid}` : `http://localhost:3001/bloom/strat/lazy/payload?id=${item.iid}&source=HINA`)
             .then((res) => {
               this.user_images = res.data
             }).finally(() => {
@@ -209,7 +209,7 @@ export default {
         }
       }
       if (this.queue.length < 15) {
-        axios.get(`http://localhost:3001/bloom/strat/lazy/random?hina=true&dmz=` + uuid())
+        axios.get(`https://app.ixil.cc/api/bloom/strat/lazy/random?dmz=` + uuid())
           .then((res) => {
             this.source = res.data
           }).finally(() => {
