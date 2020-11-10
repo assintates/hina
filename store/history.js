@@ -51,14 +51,14 @@ export const actions = {
           vuexContext.commit('SET_HISTORY_DATA', albms)
           albms = []
           for (const x of response.data) {
-            await axios.get('https://proxy.ixil.cc/color?image=' + x.thumb)
-              .then(async function(rsp) {
+            await axios.get('https://app.ixil.cc/prox/color?image=' + x.thumb)
+              .then(function(rspe) {
                 albms.push({
                   id: x.id,
                   name: x.name,
                   thumb: x.thumb,
                   source: x.source,
-                  color: rsp.data
+                  color: rspe.data
                 })
               }).catch(async function() {
                 albms.push({

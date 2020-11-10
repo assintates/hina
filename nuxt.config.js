@@ -143,6 +143,12 @@ export default {
       pathRewrite: {
         '^/api': '/'
       }
+    },
+    '/prox': {
+      target: 'https://proxy.ixil.cc',
+      pathRewrite: {
+        '^/prox': '/'
+      }
     }
   },
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)

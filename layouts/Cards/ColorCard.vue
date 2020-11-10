@@ -63,7 +63,7 @@ export default {
   },
 
   mounted() {
-    axios.get(`https://proxy.ixil.cc/color?image=${this.album.thumb}`)
+    axios.get(`https://app.ixil.cc/prox/color?image=${this.album.thumb}`)
       .then((res) => {
         this.item.color = res.data
       })
