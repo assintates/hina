@@ -234,17 +234,7 @@ export default {
 
 <style>
 
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  overflow: hidden;
-}
-
-#app .vue-tinder {
+.app .vue-tinder {
   position: absolute;
   z-index: 1;
   left: 0;

@@ -27,7 +27,7 @@
     </v-navigation-drawer>
     <v-app-bar
       :clipped-left="clipped"
-      fixed
+      collapse-on-scroll
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
@@ -246,7 +246,6 @@ export default {
       fixed: true,
       fixers: [],
       notific: true,
-
       rules: {
         email: value => {
           const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
