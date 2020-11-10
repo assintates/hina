@@ -14,7 +14,8 @@
           >
             <div
               style="left: -7px; border-radius: 1.5rem; width: 2.8rem; height: 2.9rem; top:-10px; margin: 0; position: absolute; background: white; color: black; mix-blend-mode: screen; user-select: none;">
-              <h1 style="mix-blend-mode: difference; color: white;margin-left: 10px; margin-top: 17px;">M</h1>
+              <h1 style="mix-blend-mode: difference; color: white;margin-left: 10px; margin-top: 17px;">
+                {{ scope.data.source === 'MISHA' ? `M` : 'H' }}</h1>
             </div>
           </div>
         </template>
@@ -30,25 +31,22 @@
     >
       <v-card>
         <v-card-title class="headline primary lighten-2">
-          <v-col>
-            <v-row>
-              <v-icon>mdi-instagram</v-icon>
-              <p style="padding-top: 15px">{{ gsid }}</p>
-            </v-row>
-            <h3>Open Using</h3>
-          </v-col>
+          <v-row justify="space-between">
+            <v-icon size="4rem">{{ sourced === 'MISHA' ? 'mdi-instagram' : 'mdi-spa' }}</v-icon>
+            <p style="padding-top: 15px">{{ name }}</p>
+          </v-row>
         </v-card-title>
 
         <v-card-text>
           <v-container style="">
             <v-row justify="space-between">
-              <v-btn
-                color="secondary"
-                text
-                :href="`https://www.instagram.com/${gsid}/`"
-                target="_blank"
-                rel="noopener noreferrer"
-                @click="dialog = false"
+              <v-btn v-if="sourced === 'MISHA'"
+                     color="secondary"
+                     text
+                     :href="origin"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     @click="dialog = false"
               >
                 <v-row>
                   <div style="padding-top: 3px">
@@ -57,19 +55,40 @@
                   <v-icon>mdi-instagram</v-icon>
                 </v-row>
               </v-btn>
-              <v-btn
-                color="primary"
-                text
-                :to="`/i/${ssid}`"
-                @click="dialog = false"
+              <v-btn v-if="sourced === 'HINA'"
+                     color="secondary"
+                     text
+                     :href="origin"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     @click="dialog = false"
               >
                 <v-row>
-                  <v-icon>mdi-leaf</v-icon>
                   <div style="padding-top: 3px">
-                    <h3>Misha</h3>
+                    <h3>External Site</h3>
                   </div>
+                  <v-icon>mdi-web</v-icon>
                 </v-row>
               </v-btn>
+
+              <div>
+                <v-row>
+                  <v-btn
+                    color="primary"
+                    :to="sourced === 'MISHA'? `/i/${ssid}`: `/a/${ssid}`"
+                    @click="dialog = false"
+                  >
+                    <v-row style="z-index: 1;">
+                      <v-icon>{{ sourced === 'MISHA' ? 'mdi-leaf' : 'mdi-spa' }}</v-icon>
+                      <div style="padding-top: 3px">
+                        <h3>{{ sourced === 'MISHA' ? 'MISHA' : 'HINA' }}</h3>
+                      </div>
+                    </v-row>
+                  </v-btn>
+                  <div class="alert">
+                  </div>
+                </v-row>
+              </div>
             </v-row>
           </v-container>
         </v-card-text>
@@ -117,12 +136,14 @@ export default {
     user_images: null,
     cool_down: [],
     dialog: false,
-    gsid: '',
+    origin: '',
+    name: '',
+    sourced: '',
     ssid: '',
     bg_img: 'https://cdn.discordapp.com/attachments/773136270867824640/774289206406807592/shlyukha.webp'
   }),
   created() {
-    axios.get(`https://app.ixil.cc/api/bloom/strat/lazy/random`)
+    axios.get(`http://localhost:3001/bloom/strat/lazy/random`)
       .then((res) => {
         this.source = res.data
       }).finally(() => {
@@ -141,7 +162,9 @@ export default {
           list.push({
             image: this.user_images.thumb[i],
             iid: this.user_images.id,
-            gid: this.user_images.name,
+            name: this.user_images.name,
+            source: this.user_images.source,
+            origin: this.user_images.origin,
             id: uuid()
           })
           this.offset++
@@ -149,7 +172,14 @@ export default {
       } else {
         for (let i = 0; i < this.source.length; i++) {
           for (let j = 0; j < this.source[i].thumb.length; j++) {
-            list.push({ image: this.source[i].thumb[j], iid: this.source[i].id, gid: this.source[i].name, id: uuid() })
+            list.push({
+              image: this.source[i].thumb[j],
+              iid: this.source[i].id,
+              name: this.source[i].name,
+              source: this.source[i].source,
+              origin: this.source[i].origin,
+              id: uuid()
+            })
           }
           this.offset++
         }
@@ -162,14 +192,15 @@ export default {
     },
     onSubmit({ item, type }) {
       if (type === 'super') {
-        this.gsid = item.gid
+        this.origin = item.origin
+        this.name = item.name
+        this.sourced = item.source
         this.ssid = item.iid
         this.dialog = true
       } else if (type === 'like') {
         if (!this.cool_down.includes(item.iid)) {
           this.cool_down.push(item.iid)
-          console.log('Accessing Profile Data')
-          axios.get(`https://app.ixil.cc/api/bloom/strat/lazy/payload?id=${item.iid}`)
+          axios.get(item.source === 'MISHA' ? `http://localhost:3001/bloom/strat/lazy/payload?id=${item.iid}` : `http://localhost:3001/bloom/strat/lazy/payload?id=${item.iid}&source=HINA`)
             .then((res) => {
               this.user_images = res.data
             }).finally(() => {
@@ -178,8 +209,7 @@ export default {
         }
       }
       if (this.queue.length < 15) {
-        console.log('Fetching New Data')
-        axios.get(`https://app.ixil.cc/api/bloom/strat/lazy/random?dmz=` + uuid())
+        axios.get(`http://localhost:3001/bloom/strat/lazy/random?hina=true&dmz=` + uuid())
           .then((res) => {
             this.source = res.data
           }).finally(() => {
@@ -292,5 +322,49 @@ body {
 
 .btns img:nth-last-child(1) {
   margin-right: 0;
+}
+
+
+.alert {
+  background: white;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 260px !important;
+  animation: pulsate 1s ease-out;
+  animation-iteration-count: infinite;
+  opacity: 1;
+}
+
+@-webkit-keyframes pulsate {
+  0% {
+    -webkit-transform: scale(0.1, 0.1);
+    opacity: 0.0;
+  }
+  50% {
+    opacity: 1.0;
+  }
+  100% {
+    -webkit-transform: scale(1.2, 1.2);
+    opacity: 0.0;
+  }
+}
+
+
+.opacity-pulse {
+  animation: opacityPulse 1s ease-out;
+  animation-iteration-count: infinite;
+  opacity: 0;
+}
+
+@-webkit-keyframes opacityPulse {
+  0% {
+    opacity: 0.0;
+  }
+  50% {
+    opacity: 1.0;
+  }
+  100% {
+    opacity: 0.0;
+  }
 }
 </style>
