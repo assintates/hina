@@ -888,7 +888,7 @@ export default {
   },
 
   asyncData({ params }) {
-    return axios.get(`https://api.ixil.cc/bloom/hina/payload?id=${params.id}`)
+    return axios.get(`https://app.ixil.cc/api/bloom/hina/payload?id=${params.id}`)
       .then((res) => {
         return { info: res.data }
       })
