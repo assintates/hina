@@ -485,18 +485,6 @@
                      @error="dist = true"
                      max-width="17rem" max-height="20rem;"
               >
-                <template v-slot:placeholder>
-                  <v-row
-                    class="fill-height ma-0"
-                    align="center"
-                    justify="center"
-                  >
-                    <v-progress-circular
-                      indeterminate
-                      color="red"
-                    ></v-progress-circular>
-                  </v-row>
-                </template>
                 <v-card-title style="width: 100%; height: 40%; margin-top: 100%" class="title white--text">
                   <v-row
                     style="padding-left: 1rem;"
@@ -540,18 +528,6 @@
                   @error="dist = true"
                   max-width="17rem" max-height="15rem;"
                 >
-                  <template v-slot:placeholder>
-                    <v-row
-                      class="fill-height ma-0"
-                      align="center"
-                      justify="center"
-                    >
-                      <v-progress-circular
-                        indeterminate
-                        color="red"
-                      ></v-progress-circular>
-                    </v-row>
-                  </template>
                   <v-card-title style="width: 100%; height: 50%; margin-top: 78%" class="title white--text">
                     <v-col>
                       <v-row>
