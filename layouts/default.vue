@@ -31,11 +31,6 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-      >
-        <v-icon>mdi-chevron-left</v-icon>
-      </v-btn>
       <v-tooltip bottom v-if="DownloadState">
         <template v-slot:activator="{ on, attrs }">
           <v-progress-circular
@@ -57,7 +52,7 @@
       </v-tooltip>
 
       <!--  Search   -->
-      <v-container>
+      <v-container :style="DownloadState === false? 'padding-left: 0;' : ' padding-left:2rem;'">
         <v-btn icon to="/sagasu">
           <v-icon
             class="search-field-icon"
