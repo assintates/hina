@@ -10,6 +10,9 @@ export const mutations = {
   SET_HISTORY_DATA(state, posts) {
     state.loadedPosts.push(posts)
   },
+  CLEAR_HISTORY_DATA(state) {
+    state.loadedPosts = []
+  },
 
   SET_FAV_DATA(state, data) {
     state.marks = data
@@ -38,6 +41,7 @@ export const actions = {
 
       })
         .then(async function(response) {
+          vuexContext.commit('CLEAR_HISTORY_DATA')
           for (const x of response.data) {
             await axios.get('https://app.ixil.cc/prox/color?image=' + x.thumb)
               .then(rspe => {
