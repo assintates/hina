@@ -1,5 +1,5 @@
 const axios = require('axios')
-
+import { v4 as uuid } from 'uuid'
 
 export const state = () => ({
   QueryTerm: '',
@@ -125,7 +125,7 @@ export const actions = {
 
     if (data.term !== '') data.term = `"${data.term}"`
     if (data.source.includes('ALL') && data.idol.length === 0 && data.term !== '') {
-      axios.get(`https://api.ixil.cc/bloom/hina/search?query=${data.term}&op=30&page=${data.page}`)
+      axios.get(`https://app.ixil.cc/api/bloom/hina/search?query=${data.term}&op=30&page=${data.page}&dmz=${uuid()}`)
         .then(function(response) {
           vuexContext.commit('SET_RESULT_DATA',
             response.data
@@ -139,7 +139,7 @@ export const actions = {
         data.idol
       )
       console.log('searching All')
-      axios.get(`https://api.ixil.cc/bloom/hina/search?query=${data.term}&op=30&page=${data.page}&source=${data.source.join(',')}&idol=${data.idol.join(',')}`)
+      axios.get(`https://app.ixil.cc/api/bloom/hina/search?query=${data.term}&op=30&page=${data.page}&source=${data.source.join(',')}&idol=${data.idol.join(',')}&dmz=${uuid()}`)
         .then(function(response) {
           vuexContext.commit('SET_RESULT_DATA',
             response.data
@@ -149,7 +149,7 @@ export const actions = {
       vuexContext.commit('SET_SELECTED_SOURCES_DATA',
         data.source
       )
-      axios.get(`https://api.ixil.cc/bloom/hina/search?query=${data.term}&op=30&page=${data.page}&source=${data.source.join(',')}`)
+      axios.get(`https://app.ixil.cc/api/bloom/hina/search?query=${data.term}&op=30&page=${data.page}&source=${data.source.join(',')}&dmz=${uuid()}`)
         .then(function(response) {
           vuexContext.commit('SET_RESULT_DATA',
             response.data
@@ -159,14 +159,14 @@ export const actions = {
       vuexContext.commit('SET_SELECTED_IDOL_DATA',
         data.idol
       )
-      axios.get(`https://api.ixil.cc/bloom/hina/search?query=${data.term}&op=30&page=${data.page}&idol=${data.idol.join(',')}`)
+      axios.get(`https://app.ixil.cc/api/bloom/hina/search?query=${data.term}&op=30&page=${data.page}&idol=${data.idol.join(',')}&dmz=${uuid()}`)
         .then(function(response) {
           vuexContext.commit('SET_RESULT_DATA',
             response.data
           )
         })
     } else {
-      axios.get(`https://api.ixil.cc/bloom/hina?op=30&page=${data.page}`)
+      axios.get(`https://app.ixil.cc/api/bloom/hina?op=30&page=${data.page}&dmz=${uuid()}`)
         .then(function(response) {
           vuexContext.commit('SET_RESULT_DATA',
             response.data
