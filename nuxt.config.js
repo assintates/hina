@@ -142,7 +142,8 @@ export default {
       target: 'https://api.ixil.cc',
       pathRewrite: {
         '^/api': '/'
-      }
+      },
+      headers: { client: 'Bloom-Official' }  // for analytics
     },
     '/prox': {
       target: 'https://proxy.ixil.cc',
