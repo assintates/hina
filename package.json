@@ -27,6 +27,7 @@
     "v-viewer": "^1.5.1",
     "vue-horizontal-list": "^1.0.12",
     "vue-masonry-css": "^1.0.3",
+    "vue-plyr": "^7.0.0",
     "vue-scrollto": "^2.19.1",
     "vue-timers": "^2.0.4",
     "vue-tinder": "^2.0.2",
