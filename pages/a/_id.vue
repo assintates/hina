@@ -447,7 +447,7 @@
       <div class="scrollbox-fm" />
       <div class="disable-scrollbars"
            style="margin-top: 14rem; padding-top: 1rem; overflow: scroll; height: inherit; ">
-        <v-container style="padding-bottom: 19rem; width: 100vw; padding-right: 2rem;">
+        <v-container style="padding-bottom: 1rem; width: 100vw; padding-right: 2rem;">
           <masonry
             :cols="{default: 4, 1000: 3, 700: 2, 400: 2}"
             :gutter="{default: '30px', 700: '15px'}"
@@ -534,6 +534,10 @@
             </v-img>
           </masonry>
         </v-container>
+        <v-content style="margin-bottom: 15rem; height: fit-content;" class="disable-scrollbars">
+          <Disqus style="padding: 2rem; margin-bottom: 17rem;" class="comments-sl comments disable-scrollbars" />
+        </v-content>
+
       </div>
     </div>
     <!-- END 16:9 Page -->
@@ -1213,6 +1217,16 @@ export default {
   min-height: 100vh;
 }
 
+.comments {
+  width: auto;
+  max-height: 710rem;
+  height: fit-content;
+//overflow: scroll; min-height: 60rem;
+}
+
+.comments-sl {
+
+}
 
 .mouse_wave {
   display: block;

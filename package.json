@@ -25,6 +25,7 @@
     "uuid": "^8.3.1",
     "v-img-fallback": "^0.1.5",
     "v-viewer": "^1.5.1",
+    "vue-disqus": "^4.0.1",
     "vue-horizontal-list": "^1.0.12",
     "vue-masonry-css": "^1.0.3",
     "vue-plyr": "^7.0.0",

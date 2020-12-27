@@ -70,3 +70,10 @@ export default {
   methods: {}
 }
 </script>
+
+<style>
+.disqus-footer__link {
+  opacity: 0;
+
+}
+</style>
