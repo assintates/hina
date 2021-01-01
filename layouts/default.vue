@@ -205,7 +205,7 @@
           <v-img
             class="white--text align-end"
             height="200px"
-            :src="'https://bloom-dist.herokuapp.com/prox?image='+item.thumb"
+            :src="'https://bloom-diste.herokuapp.com/prox?image='+item.thumb"
           >
           </v-img>
           <v-card-subtitle class="pb-0">{{ item.idol }}</v-card-subtitle>
