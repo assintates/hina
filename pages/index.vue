@@ -24,6 +24,7 @@
 
 <script>
 import axios from 'axios'
+import { v4 as uuid } from 'uuid'
 import ColorCard from '../layouts/Cards/ColorCard'
 import ColorCardList from '../layouts/Lists/ColorCardList'
 import HomePromote from '../layouts/Carousel/HomePromote'
@@ -53,15 +54,15 @@ export default {
       })
   },
   mounted() {
-    axios.get(`https://app.ixil.cc/api/bloom/hina?page=1&op=16`)
+    axios.get(`https://app.ixil.cc/api/bloom/hina?page=1&op=16&uid=${uuid()}`)
       .then((res) => {
         this.itemsn = res.data.data
       })
-    axios.get(`https://app.ixil.cc/api/bloom/hina/random?many=true`)
+    axios.get(`https://app.ixil.cc/api/bloom/hina/random?many=true&uid=${uuid()}`)
       .then((res) => {
         this.itemsu = res.data
       })
-    axios.get(`https://app.ixil.cc/api/bloom/hina/pollen/feed?random=true`)
+    axios.get(`https://app.ixil.cc/api/bloom/hina/pollen/feed?random=true&uid=${uuid()}`)
       .then((res) => {
         this.itemsa = res.data.data
       })
