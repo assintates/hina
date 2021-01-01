@@ -4,28 +4,28 @@
       class="ccard-md"
       v-if="$vuetify.breakpoint.mdAndUp && !shadow"
       style="height: 16rem; width: 30rem;  border-radius: 5px; transition: all ease-in 300ms;"
-      :style="`background: linear-gradient(289deg, ${hexToRgb(item.color[1], 0.4553571770505077)} 3%, ${hexToRgb(item.color[1], 0.010343171448266806)} 19%,   ${hexToRgb(item.color[0], 0.3699230033810399)} 80%, ${hexToRgb(item.color[0], 1)} 99%), url(https://proxy.ixil.cc/ren?width=500&height=400&method=cover&image=${album.thumb}) center center no-repeat; background-size: cover;`"
+      :style="`background: linear-gradient(289deg, ${hexToRgb(item.color[1], 0.4553571770505077)} 3%, ${hexToRgb(item.color[1], 0.010343171448266806)} 19%,   ${hexToRgb(item.color[0], 0.3699230033810399)} 80%, ${hexToRgb(item.color[0], 1)} 99%), url(https://bloom-dist.herokuapp.com/ren?width=500&height=400&method=cover&image=${album.thumb}) center center no-repeat; background-size: cover;`"
       v-ripple>
     </div>
     <div
       class="ccard-md"
       v-if="$vuetify.breakpoint.mdAndUp && shadow"
       style="height: 16rem; width: 30rem;  border-radius: 5px; transition: all ease-in 300ms; background-position: center center; background-size: 30rem 16rem; "
-      :style="GetShadow() + `background-image: url(https://proxy.ixil.cc/ren?width=900&height=500&method=cover&image=${album.thumb}); `"
+      :style="GetShadow() + `background-image: url(https://bloom-dist.herokuapp.com/ren?width=900&height=500&method=cover&image=${album.thumb}); `"
       v-ripple>
     </div>
     <div
       class="ccard-sm"
       v-if="$vuetify.breakpoint.smOnly"
       style="height: 10rem; width: 19rem;  border-radius: 5px;"
-      :style="`background: linear-gradient(289deg, ${hexToRgb(item.color[1], 0.4553571770505077)} 3%, ${hexToRgb(item.color[1], 0.010343171448266806)} 19%,   ${hexToRgb(item.color[0], 0.3699230033810399)} 80%, ${hexToRgb(item.color[0], 1)} 99%), url(https://proxy.ixil.cc/ren?width=400&height=200&method=cover&image=${album.thumb}) right no-repeat; background-size: 19rem 10rem;`"
+      :style="`background: linear-gradient(289deg, ${hexToRgb(item.color[1], 0.4553571770505077)} 3%, ${hexToRgb(item.color[1], 0.010343171448266806)} 19%,   ${hexToRgb(item.color[0], 0.3699230033810399)} 80%, ${hexToRgb(item.color[0], 1)} 99%), url(https://bloom-dist.herokuapp.com/ren?width=400&height=200&method=cover&image=${album.thumb}) right no-repeat; background-size: 19rem 10rem;`"
       v-ripple>
     </div>
     <div
       class="ccard-xs"
       v-if="$vuetify.breakpoint.xsOnly"
       style="height: 7rem; width: 11rem;  border-radius: 5px;"
-      :style="`background: linear-gradient(300deg, ${hexToRgb(item.color[1], 0.4553571770505077)} 3%, ${hexToRgb(item.color[1], 0.010343171448266806)} 19%,   ${hexToRgb(item.color[0], 0.3699230033810399)} 80%, ${hexToRgb(item.color[0], 1)} 99%), url(https://proxy.ixil.cc/ren?width=200&height=150&method=cover&image=${album.thumb}) right no-repeat; background-size: 11rem 8rem`"
+      :style="`background: linear-gradient(300deg, ${hexToRgb(item.color[1], 0.4553571770505077)} 3%, ${hexToRgb(item.color[1], 0.010343171448266806)} 19%,   ${hexToRgb(item.color[0], 0.3699230033810399)} 80%, ${hexToRgb(item.color[0], 1)} 99%), url(https://bloom-dist.herokuapp.com/ren?width=200&height=150&method=cover&image=${album.thumb}) right no-repeat; background-size: 11rem 8rem`"
       v-ripple>
     </div>
   </div>
