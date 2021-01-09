@@ -6,6 +6,14 @@ export default {
   head: {
     titleTemplate: '%s - bloom',
     title: 'bloom',
+    script: [
+      {
+        hid: 'Cloudflare',
+        src: 'https://static.cloudflareinsights.com/beacon.min.js',
+        defer: true,
+        'data-cf-beacon': '{"token": "0874b0be606e4e4aad15f8a538c7aaff"}'
+      }
+    ],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
