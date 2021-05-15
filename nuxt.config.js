@@ -160,6 +160,12 @@ export default {
       pathRewrite: {
         '^/prox': '/'
       }
+    },
+    '/prox': {
+      target: 'https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io',
+      pathRewrite: {
+        '^/cdn': '/'
+      }
     }
   },
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
