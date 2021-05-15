@@ -4,7 +4,7 @@
       <v-row style="padding-left: 1.5rem; padding-top: 1rem;">
         <v-avatar size="4.5rem"
                   style="box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18);">
-          <v-img :src="`https://proxy.ixil.cc/ren?width=500&height=500&method=cover&image=`+data.thumb"></v-img>
+          <v-img :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?width=500&height=500&method=cover&image=`+data.thumb"></v-img>
         </v-avatar>
         <div class="" style="justify-self: self-start">
           <v-col>
@@ -32,7 +32,7 @@
             :key="i"
           >
             <nuxt-link :to="`/a/`+data.id">
-              <v-img :src='`https://proxy.ixil.cc/ren?width=600&height=500&method=cover&image=`+imager'
+              <v-img :src='`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?width=600&height=500&method=cover&image=`+imager'
                      position="90% 60%" aspect-ratio="1.0001" />
             </nuxt-link>
           </v-carousel-item>
@@ -45,7 +45,7 @@
       <v-row style="padding-left: 1.5rem; padding-top: 1rem;">
         <v-avatar size="2.5rem"
                   style="box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18);">
-          <v-img :src="`https://proxy.ixil.cc/ren?width=200&height=200&method=cover&image=`+data.thumb"></v-img>
+          <v-img :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?width=200&height=200&method=cover&image=`+data.thumb"></v-img>
         </v-avatar>
         <div class="" style="">
           <v-col>
@@ -77,7 +77,7 @@
             :key="i"
           >
             <nuxt-link :to="`/a/`+data.id">
-              <v-img :src='`https://proxy.ixil.cc/ren?width=500&height=500&method=cover&image=`+imager'
+              <v-img :src='`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?width=500&height=500&method=cover&image=`+imager'
                      position="90% 60%" aspect-ratio="1.0001" />
             </nuxt-link>
           </v-carousel-item>
@@ -116,7 +116,7 @@
             :key="i"
           >
             <nuxt-link :to="`/a/`+data.id">
-              <v-img :src='`https://proxy.ixil.cc/ren?width=300&height=300&method=cover&image=`+imager'
+              <v-img :src='`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?width=300&height=300&method=cover&image=`+imager'
                      position="90% 60%" aspect-ratio="1.0001" />
             </nuxt-link>
           </v-carousel-item>

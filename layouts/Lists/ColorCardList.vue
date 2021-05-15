@@ -31,7 +31,7 @@
             <v-avatar tile size="10rem"
                       style="box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18)">
               <v-img
-                :src="`https://proxy.ixil.cc/ren?width=500&height=500&method=cover&image=`+image"></v-img>
+                :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?width=500&height=500&method=cover&image=`+image"></v-img>
             </v-avatar>
             <h1 v-text="artist" />
             <div class="" style="align-self: center">
@@ -76,7 +76,7 @@
           <v-avatar tile size="10rem"
                     style="box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18)">
             <v-img contain
-                   :src="`https://proxy.ixil.cc/ren?width=500&height=500&method=cover&image=${image}`"></v-img>
+                   :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?width=500&height=500&method=cover&image=${image}`"></v-img>
           </v-avatar>
           <h1 v-text="artist" />
           <div class="" style="align-self: center">
@@ -163,7 +163,7 @@
              style=" flex: 1 0 11%; border-radius: 5px; width: fit-content; height: fit-content;">
           <v-img class="pxct-sm" height="10rem" width="15rem"
                  style="border-radius: 5px; box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18);"
-                 :src="`https://proxy.ixil.cc/ren?width=400&height=500&method=cover&image=`+item" v-ripple>
+                 :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?width=400&height=500&method=cover&image=`+item" v-ripple>
           </v-img>
         </div>
       </div>
@@ -172,7 +172,7 @@
              style=" flex: 1 0 11%; border-radius: 5px; width: fit-content; height: fit-content;">
           <v-img class="pxct-xs" height="7rem" width="10rem"
                  style="border-radius: 5px; box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18);"
-                 :src="`https://proxy.ixil.cc/ren?width=400&height=500&method=cover&image=`+item" v-ripple>
+                 :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?width=400&height=500&method=cover&image=`+item" v-ripple>
           </v-img>
         </div>
       </div>

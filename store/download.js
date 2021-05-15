@@ -37,7 +37,7 @@ export const actions = {
         for (i; i < data.data.length; i++) {
           let downloadurl = data.data[i]
           await axios
-            .get('https://proxy.ixil.cc/prox?dd=true&image=' + downloadurl, {  // uses proxy
+            .get('https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/prox?dd=true&image=' + downloadurl, {  // uses proxy
               responseType: 'arraybuffer'
             })
             .then(response => {
@@ -76,7 +76,7 @@ export const actions = {
         for (i; i < data.indexes.length; i++) {
           let downloadurl = data.en.gliphs[data.indexes[i] - 1]
           await axios
-            .get('https://proxy.ixil.cc/prox?dd=true&image=' + downloadurl, {  // uses proxy
+            .get('https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/prox?dd=true&image=' + downloadurl, {  // uses proxy
               responseType: 'arraybuffer'
             })
             .then(response => {

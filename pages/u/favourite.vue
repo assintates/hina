@@ -15,7 +15,7 @@
               <v-img max-width="17rem" max-height="20rem;"
                      style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
                      lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                     :src="`https://proxy.ixil.cc/prox?image=`+item.thumb">
+                     :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/prox?image=`+item.thumb">
                 <template v-slot:placeholder>
                   <v-row
                     class="fill-height ma-0"

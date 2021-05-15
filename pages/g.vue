@@ -27,7 +27,7 @@ export default {
     return {}
   },
   asyncData({ params }) {
-    return axios.get(`https://proxy.ixil.cc/lia/functions/videos/phcdn?id=ph5f47b7e9d7fc0`)
+    return axios.get(`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/lia/functions/videos/phcdn?id=ph5f47b7e9d7fc0`)
       .then((res) => {
         return { videos: res.data }
       })
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     GetProxy(key) {
-      return key.replace('https://dv.phncdn.com/', 'https://proxy.ixil.cc/bpg/')
+      return key.replace('https://dv.phncdn.com/', 'https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/bpg/')
     }
   }
 }

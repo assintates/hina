@@ -2,7 +2,7 @@
   <div style="height: 100vh;" class="Album-Parent">
     <div v-if="!Check43Ratio()" class="bottom disable-scrollbars"
          style="background-size: cover; -webkit-transition: background-image 3s ease-in-out; transition: 3s;  background-blend-mode: darken;"
-         :style="`background-image: url(https://proxy.ixil.cc/prox?image=${BgImage});`">
+         :style="`background-image: url(https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/prox?image=${BgImage});`">
 
       <!-- Medium Meta -->
       <div class="meta" v-if="$vuetify.breakpoint.mdAndUp">
@@ -13,7 +13,7 @@
                    max-height="318px"
                    max-width="264px"
                    style="border-radius: 5px; box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18);"
-                   :src="`https://proxy.ixil.cc/prox?image=`+info.thumb" />
+                   :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/prox?image=`+info.thumb" />
             <v-col style="margin-left: 4rem;">
               <h1 class="unselectable" v-if="$vuetify.breakpoint.mdAndUp"
                   style="width: 40rem;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 0 0 3px #000000;">
@@ -210,7 +210,7 @@
                max-height="218px"
                max-width="194px"
                style="border-radius: 5px; box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18);"
-               :src="`https://proxy.ixil.cc/prox?image=`+info.thumb" />
+               :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/prox?image=`+info.thumb" />
         <div style="padding-top: 1rem;">
           <h2
             style="width: 18rem;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 0 0 3px #000000;">
@@ -456,7 +456,7 @@
                    @click="show(index)" width="17rem" max-height="20rem;"
                    style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
                    lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                   :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data"
+                   :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?method=cover&width=200&height=300&image=`+item.data"
                    @error="dist = true">
               <template v-slot:placeholder>
                 <v-row
@@ -477,7 +477,7 @@
                    @click="show(index)" width="10rem" max-height="20rem;"
                    style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
                    lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                   :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data"
+                   :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?method=cover&width=200&height=300&image=`+item.data"
                    @error="dist = true">
               <template v-slot:placeholder>
                 <v-row
@@ -498,7 +498,7 @@
                    @click="show(index)" width="17rem" max-height="20rem;"
                    style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
                    lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                   :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data">
+                   :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?method=cover&width=200&height=300&image=`+item.data">
               <template v-slot:placeholder>
                 <v-row
                   class="fill-height ma-0"
@@ -518,7 +518,7 @@
                    @click="show(index)" width="10rem" max-height="20rem;"
                    style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
                    lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                   :src="`https://proxy.ixil.cc/ren?method=cover&width=200&height=300&image=`+item.data">
+                   :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?method=cover&width=200&height=300&image=`+item.data">
               <template v-slot:placeholder>
                 <v-row
                   class="fill-height ma-0"
@@ -546,7 +546,7 @@
     <!-- 4:3 Page -->
     <div v-if="Check43Ratio()" class="bottom disable-scrollbars"
          style="background-size: cover; background-position: center center; -webkit-transition: background-image 3s ease-in-out; transition: 3s;  background-blend-mode: darken;"
-         :style="`background-image: url(https://proxy.ixil.cc/prox?image=${BgImage});`">
+         :style="`background-image: url(https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/prox?image=${BgImage});`">
 
       <v-row class="bottom" justify="space-around"
              style=" padding-left: 6rem; padding-top: 20rem; z-index: -1; width: 100vw; overflow: hidden">
@@ -557,7 +557,7 @@
                    max-height="318px"
                    max-width="264px"
                    style="border-radius: 5px; box-shadow:  0 0.9px 2.2px rgba(0, 0, 0, 0.051),  0 2.1px 5.3px rgba(0, 0, 0, 0.073),  0 3.9px 10px rgba(0, 0, 0, 0.09),  0 6.9px 17.9px rgba(0, 0, 0, 0.107),  0 13px 33.4px rgba(0, 0, 0, 0.129),  0 31px 80px rgba(0, 0, 0, 0.18);"
-                   :src="`https://proxy.ixil.cc/prox?image=`+info.thumb" />
+                   :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/prox?image=`+info.thumb" />
             <div>
               <v-col>
                 <h2
@@ -755,7 +755,7 @@
                      width="30rem" max-height="18rem;"
                      style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
                      lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                     :src="`https://proxy.ixil.cc/ren?method=cover&width=500&height=400&image=`+item.data"
+                     :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?method=cover&width=500&height=400&image=`+item.data"
                      @error="dist = true">
                 <template v-slot:placeholder>
                   <v-row
@@ -776,7 +776,7 @@
                      @click="show(index)" width="10rem" max-height="16rem;"
                      style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
                      lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                     :src="`https://proxy.ixil.cc/ren?method=cover&width=300&height=200&image=`+item.data"
+                     :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?method=cover&width=300&height=200&image=`+item.data"
                      @error="dist = true">
                 <template v-slot:placeholder>
                   <v-row
@@ -798,7 +798,7 @@
                      width="30rem" max-height="18rem;"
                      style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
                      lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                     :src="`https://proxy.ixil.cc/ren?method=cover&width=500&height=400&image=`+item.data">
+                     :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?method=cover&width=500&height=400&image=`+item.data">
                 <template v-slot:placeholder>
                   <v-row
                     class="fill-height ma-0"
@@ -818,7 +818,7 @@
                      @click="show(index)" width="10rem" max-height="16rem;"
                      style="border-radius: 5px; margin-left: 1rem; margin-right: 1rem; margin-bottom: 2rem;"
                      lazy-src="https://cdn.discordapp.com/attachments/488810702190936075/768945580038160394/unknown.png"
-                     :src="`https://proxy.ixil.cc/ren?method=cover&width=300&height=200&image=`+item.data">
+                     :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?method=cover&width=300&height=200&image=`+item.data">
                 <template v-slot:placeholder>
                   <v-row
                     class="fill-height ma-0"
@@ -843,7 +843,7 @@
 
     <!-- Preload Background image -->
     <div style="width: 0; height: 0;"
-         :style="`background-image: url(https://proxy.ixil.cc/prox?image=${NBGImage});`"></div>
+         :style="`background-image: url(https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/prox?image=${NBGImage});`"></div>
   </div>
 </template>
 
@@ -909,12 +909,12 @@ export default {
           { name: 'og:url', content: `https://app.ixil.cc/a/${this.info.id}` },
           { name: 'og:description', content: this.info.edata },
           { name: 'og:title', content: 'Bloom | Hina - ' + this.info.name },
-          { name: 'og:image', content: `https://proxy.ixil.cc/prox?image=` + this.info.thumb },
+          { name: 'og:image', content: `https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/prox?image=` + this.info.thumb },
           { name: 'og:site_name', content: 'Bloom | Hina - ' + this.info.name },
           { name: 'og:type', content: 'website' },
           { name: 'twitter:card', content: 'summary_large_image' },
           { name: 'twitter:url', content: `https://app.ixil.cc/a/${this.info.id}` },
-          { name: 'twitter:image', content: `https://proxy.ixil.cc/prox?image=` + this.info.thumb },
+          { name: 'twitter:image', content: `https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/prox?image=` + this.info.thumb },
           { name: 'twitter:title', content: 'Bloom | Hina - ' + this.info.name },
           { name: 'twitter:description', content: this.info.edata },
           {
