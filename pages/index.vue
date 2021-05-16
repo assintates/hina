@@ -10,7 +10,7 @@
       From Hina</h1>
     <color-card-list v-if="itemsn.length > 0" :items="itemsn" link="/sagasu" name="New Albums" class="pt-3 pb-6" />
     <v-parallax class=""
-                :src="`https://bloom-dist.herokuapp.com/prox?image=`+itemsd.gliphs[0]"
+                :src="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/prox?image=`+itemsd.gliphs[0]"
                 style="width: 100%; height: fit-content;">
       <div>
         <color-card-list :data="itemsd.gliphs" :artist="itemsd.idol" :source="itemsd.source" :image="itemsd.thumb"

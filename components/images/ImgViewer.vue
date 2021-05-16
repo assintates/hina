@@ -11,8 +11,8 @@
     >
       <img
         v-for="{data} in images"
-        :src="data.includes('cdn.discordapp.com') ? `https://bloom-diste.herokuapp.com/ren?method=cover&width=200&height=300&image=`+data : `https://resizer.expeditedaddons.com?api_key=2DJ8GVH453T57O6XRIFZ7SA4C1U32909Q06P1YEKLM8BWN&width=200&height=300&image_url=`+data"
-        :data-source="`https://bloom-diste.herokuapp.com/prox?image=`+data"
+        :src="data.includes('cdn.discordapp.com') ? `https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/ren?method=cover&width=200&height=300&image=`+data : `https://resizer.expeditedaddons.com?api_key=2DJ8GVH453T57O6XRIFZ7SA4C1U32909Q06P1YEKLM8BWN&width=200&height=300&image_url=`+data"
+        :data-source="`https://main-bloom-d-ltbdtk4j88hgmuxs-gtw.qovery.io/prox?image=`+data"
         :key="data"
         class="image"
       >
